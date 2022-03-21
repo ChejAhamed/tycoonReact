@@ -2,13 +2,13 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    node: true,
+    node: true
   },
   extends: [
-    'airbnb-base',
+    'airbnb-base'
   ],
   parserOptions: {
-    ecmaVersion: 'latest',
+    ecmaVersion: 'latest'
   },
   rules: {
     'comma-dangle': [2, 'never'],
