@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Lobby.css';
 
 function Lobby() {
   function play() {
@@ -7,25 +8,14 @@ function Lobby() {
   return (
     <>
       <div>Lobby</div>
-      <div className="manu">
+      <div className="lobby">
 
-        <Link className="singl P layer" to="/rules">
+        <Link className="game" to="/game">
           <button type="button" onClick={play()}>
-            Single Play
+            Start Game
           </button>
         </Link>
-        <button type="button" onClick={play()}>
-          MultiPlayer
-        </button>
-        <button type="button" onClick={play()}>
-          Pass & Play
-        </button>
-        <button type="button" onClick={play()}>
-          Setting
-        </button>
-        <button type="button" onClick={play()}>
-          Online With Friends
-        </button>
+
       </div>
 
     </>

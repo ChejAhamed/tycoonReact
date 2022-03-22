@@ -3,3 +3,15 @@
     height: 62.5rem;
     background-image: url("../../pictures/mainMenu.PNG");
 }
+.menu-top{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+.menu-bottom{
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+}

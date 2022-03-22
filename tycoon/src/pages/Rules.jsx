@@ -9,23 +9,22 @@ function Rules() {
       <div>Rules</div>
       <div className="manu">
 
-        <Link className="singl P layer" to="/rules">
+        <Link className="classic" to="/lobby">
           <button type="button" onClick={play()}>
-            Single Play
+            Classic
           </button>
         </Link>
-        <button type="button" onClick={play()}>
-          MultiPlayer
-        </button>
-        <button type="button" onClick={play()}>
-          Pass & Play
-        </button>
-        <button type="button" onClick={play()}>
-          Setting
-        </button>
-        <button type="button" onClick={play()}>
-          Online With Friends
-        </button>
+        <Link className="Quick" to="/lobby">
+          <button type="button" onClick={play()}>
+            Quick
+          </button>
+        </Link>
+        <Link className="Custom" to="/lobby">
+          <button type="button" onClick={play()}>
+            Custom
+          </button>
+        </Link>
+
       </div>
 
     </>
