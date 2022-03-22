@@ -5,13 +5,13 @@ import Header from './compoments/Header';
 import Footer from './compoments/Footer';
 
 import configureStore from './redux/store';
-import Home from './pages/Home';
-import Tycoon from './pages/Tycoon';
-import Aboutus from './pages/Aboutus';
-import Mode from './pages/Mode';
-import Rules from './pages/Rules';
-import Lobby from './pages/Lobby';
-import Game from './pages/Game';
+import Home from './pages/Home/Home';
+import Tycoon from './pages/Tycoon/Tycoon';
+import Aboutus from './pages/Aboutus/Aboutus';
+import Mode from './pages/Mode/Mode';
+import Rules from './pages/Rules/Rules';
+import Lobby from './pages/Lobby/Lobby';
+import Game from './pages/Game/Game';
 
 function App() {
   return (

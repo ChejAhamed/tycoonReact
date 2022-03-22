@@ -7,7 +7,7 @@
     height:37.3125rem;
     width: 50rem;
 
-    background-image: url('../../pictures/mainMenu.PNG');
+    background-image: url('../../../pictures/mainMenu.PNG');
     border-radius: 25px;
    
 }
@@ -36,7 +36,7 @@
     height: 12rem;
     margin-top: 0.5rem;
     border-radius: 2.5rem 0rem 2.5rem 0rem;
-    background-image: url("../../pictures/shop.png");
+    background-image: url("../../../pictures/shop.png");
 }
 .bottom-two-right-bnt{
     margin-left: 1rem;
@@ -44,7 +44,7 @@
     height: 12rem;
     margin-top: 0.5rem;
     border-radius: 2.5rem 0rem 2.5rem 0rem;
-    background-image: url("../../pictures/chat.png");
+    background-image: url("../../../pictures/chat.png");
 }
 .bottom-two{
     display: flex;
@@ -57,7 +57,7 @@
     height: 16rem;
     margin-top: 2.3rem;
     margin-left: 1.08rem;
-    background-image: url("../../pictures/learnMore.png");
+    background-image: url("../../../pictures/learnMore.png");
     border-radius: 2rem;
 }
 .container-bottom{
@@ -87,7 +87,7 @@
     height: 28rem;
     margin-top: 2.3rem;
     margin-left: 1.08rem;
-    background-image: url("../../pictures/play.png");
+    background-image: url("../../../pictures/play.png");
     border-radius: 4rem;
 }
 button:hover{
