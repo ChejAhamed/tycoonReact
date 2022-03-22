@@ -1,6 +1,6 @@
-.lobby{
+.game {
     width: auto;
-    background-color: azure;
+    background-color: rgb(255, 250, 240);
     height: 60rem;
 }
 .title {

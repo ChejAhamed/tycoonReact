@@ -1,8 +1,40 @@
-.board{
-    width: 62.5rem;
-    height: 62.5rem;
-    background-image: url("../../pictures/mainMenu.PNG");
+.tycoon {
+    width: auto;
+    background-color: azure;
+    height: 60rem;
 }
+.container {
+    height:37.3125rem;
+    width: 50rem;
+
+    background-image: url('../../pictures/mainMenu.PNG');
+    border-radius: 25px;
+   
+}
+.button {
+    
+    background-image: url(https://media.istockphoto.com/vectors/plan00layouttemplatenumbered60-vector-id1011366624?s=612x612);
+    margin-top: 1rem;
+    margin-left: 1rem;
+    border-radius: 5rem;
+    width: 4rem;
+    height: 4rem;
+}
+.container-top{
+    
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: flex-start;
+        align-items: center;
+    
+}
+.button-left{
+
+}
+
+
 .menu-top{
     display: flex;
     flex-direction: column;
@@ -14,4 +46,17 @@
     align-content: center;
     justify-content: space-evenly;
     align-items: center;
+}
+.button-left{
+    width: 20rem;
+    height: 28rem;
+    margin-top: 2.3rem;
+    margin-left: 1.08rem;
+    background-image: url("../../pictures/play.png");
+    border-radius: 4rem;
+}
+button:hover{
+    background-color: red;
+    border-radius: 50px;
+    border-width: 5px;
 }

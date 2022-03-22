@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Rules.css';
 
 function Rules() {
   function play() {
   }
   return (
-    <>
+    <div className="rules">
       <div>Rules</div>
       <div className="manu">
 
@@ -27,7 +28,7 @@ function Rules() {
 
       </div>
 
-    </>
+    </div>
   );
 }
 

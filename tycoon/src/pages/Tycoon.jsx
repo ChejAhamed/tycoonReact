@@ -7,8 +7,25 @@ function Tycoon() {
 
   }
   return (
-    <>
+    <div className="tycoon">
       <div className="title">Tycoon</div>
+      <div className="container">
+        <div className="container-top">
+          <div className="setting-button">
+            <Link className="settings" to="/setting">
+              <button className="button" type="button"> </button>
+            </Link>
+          </div>
+        </div>
+        <div className="container-bottom">
+          <div className="bottom-left">
+            <Link className="settings" to="/mode">
+              <button type="button" className="button-left"> </button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
       <div className="menu-top">
         <div className="settings">
           <Link className="settings" to="/mode">
@@ -50,7 +67,7 @@ function Tycoon() {
 
       <div className="board" />
 
-    </>
+    </div>
   );
 }
 

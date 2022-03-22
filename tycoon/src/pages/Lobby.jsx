@@ -6,9 +6,9 @@ function Lobby() {
   function play() {
   }
   return (
-    <>
-      <div>Lobby</div>
-      <div className="lobby">
+    <div className="lobby">
+      <div className="title">Lobby</div>
+      <div className="l">
 
         <Link className="game" to="/game">
           <button type="button" onClick={play()}>
@@ -18,7 +18,7 @@ function Lobby() {
 
       </div>
 
-    </>
+    </div>
   );
 }
 

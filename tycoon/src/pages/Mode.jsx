@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Mode.css';
 
 function Mode() {
   function play() {
   }
 
   return (
-    <>
+    <div className="mode">
       <div>Mode</div>
       <div className="manu">
 
@@ -29,7 +30,7 @@ function Mode() {
         </button>
       </div>
 
-    </>
+    </div>
   );
 }
 
