@@ -1,0 +1,13 @@
+.game {
+    width: auto;
+    background-color: rgb(255, 250, 240);
+    height: 60rem;
+}
+.title {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+}
