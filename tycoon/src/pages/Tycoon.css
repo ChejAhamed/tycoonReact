@@ -30,9 +30,44 @@
         align-items: center;
     
 }
-.button-left{
+.bottom-two-left-bnt{
+    margin-left: 1rem;
+    width: 12rem;
+    height: 12rem;
+    margin-top: 0.5rem;
+    border-radius: 2.5rem 0rem 2.5rem 0rem;
+    background-image: url("../../pictures/shop.png");
+}
+.bottom-two-right-bnt{
+    margin-left: 1rem;
+    width: 12rem;
+    height: 12rem;
+    margin-top: 0.5rem;
+    border-radius: 2.5rem 0rem 2.5rem 0rem;
+    background-image: url("../../pictures/chat.png");
+}
+.bottom-two{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 
 }
+.top-twobnt{
+    width: 25rem;
+    height: 16rem;
+    margin-top: 2.3rem;
+    margin-left: 1.08rem;
+    background-image: url("../../pictures/learnMore.png");
+    border-radius: 2rem;
+}
+.container-bottom{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    
+}
+
+
 
 
 .menu-top{
@@ -56,7 +91,8 @@
     border-radius: 4rem;
 }
 button:hover{
-    background-color: red;
+    
     border-radius: 50px;
     border-width: 5px;
+    border-color: rgb(255, 251, 0);
 }
