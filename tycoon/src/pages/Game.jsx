@@ -9,6 +9,7 @@ function Game() {
         Game
       </div>
       WELLCOME TO THE GAME
+      <div className="board" />
     </div>
   );
 }
