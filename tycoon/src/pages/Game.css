@@ -21,3 +21,32 @@
     height: 800px;
     background-image: url('../../pictures/tycoon.png');
 }
+.menu{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.humanPlayers{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    margin: 5rem;
+
+}
+.aiPlayers{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    margin: 5rem;
+}
+.btngame {
+    
+    margin: 0.3rem;
+
+}
