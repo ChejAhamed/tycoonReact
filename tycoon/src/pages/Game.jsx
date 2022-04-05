@@ -21,7 +21,7 @@ function Game() {
     const numberTwo = Math.floor(Math.random() * (6 - 1 + 1) + 1);
     const newPosition = numberOne + numberTwo;
     console.log(newPosition);
-    play(newPosition);
+    // git merplay(newPosition);
 
     console.log(`yuppi${Math.random() * 1}` < 0.5);
   }
