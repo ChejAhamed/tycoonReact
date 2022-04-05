@@ -11,98 +11,35 @@ function Game() {
   const [disableButtonbird, setDisableButtonBird] = useState(false);
   const { players } = BoardPlayer;
   const board = BoardPlayer.theBoard;
-  console.log(players);
-  const plu = [];
-  plu.push(players.human[0]);
-  plu.push(players.ai[1]);
-  plu.push(players.ai[2]);
+  const playerPlayingGame = [];
   console.log(board);
-  console.log(plu);
-
-  const playerPlaying = [];
-  function throwDice() {
-    // throdice logic
-  }
-  function readArray() {
-    for (let i = 0; i <= playerPlaying.length - 1; i += 1) {
-      console.log(`iter over array ${playerPlaying}`);
-    }
-  }
   console.log(players);
-  /* for (let i = 0; i <= players.length - 1; i += 1) {
-    console.log(players);
-  }
-   */
-  function startGame() {
-    // move from menu screeen to game and show dice button
-  }
-  function addPlayer(player) {
-    let playing = [];
-    if (player.startsWith('h')) {
-      if (player === 'hTopHat') {
-        playerPlaying.push(players.human[0]);
-        playerPlaying.push(players.human[2]);
-        playing = [...playerPlaying];
+  const playerPlaying = [];
 
-        console.log(playing);
-        setDisableButtonTopHat(true);
-      } else if (player === 'hShip') {
-        playerPlaying.push(players.human[1]);
-        playing = [...playerPlaying];
-        console.log(playing);
-        setDisableButtonShip(true);
-      } else if (player === 'hDog') {
-        playing = [...playerPlaying, players.human[2]];
-        console.log(playing);
-        console.log(playing);
-        setDisableButtonDog(true);
-      } else if (player === 'hCar') {
-        playerPlaying.push(players.human[3]);
-        setDisableButtonCar(true);
-        console.log(playerPlaying);
-      } else if (player === 'hBird') {
-        playerPlaying.push(players.human[4]);
-        setDisableButtonBird(true);
-        console.log(playerPlaying);
-      } else if (player === 'hShoe') {
-        playerPlaying.push(players.human[5]);
-        setDisableButtonShoe(true);
-        console.log(playerPlaying);
-      } else {
-        return alert('wrong input');
-      }
-    } else if (player.startsWith('ai')) {
-      if (player === 'aiTopHat') {
-        playerPlaying.push(players.ai[0]);
-        setDisableButtonTopHat(true);
-      } else if (player === 'aiShip') {
-        playerPlaying.push(players.ai[1]);
-        setDisableButtonShip(true);
-      } else if (player === 'aiDog') {
-        playerPlaying.push(players.ai[2]);
-        setDisableButtonDog(true);
-      } else if (player === 'aiCar') {
-        playerPlaying.push(players.ai[3]);
-        setDisableButtonCar(true);
-      } else if (player === 'aiBird') {
-        playerPlaying.push(players.ai[4]);
-        setDisableButtonBird(true);
-      } else if (player === 'aiShoe') {
-        playerPlaying.push(players.ai[5]);
-        // setDisableButtonShoe(true);
-      }
-    }
-    console.log(playerPlaying.length);
-    readArray();
-    return playerPlaying;
+  function throwDice() {
+    const numberOne = Math.floor(Math.random() * (6 - 1 + 1) + 1);
+    const numberTwo = Math.floor(Math.random() * (6 - 1 + 1) + 1);
+    const newPosition = numberOne + numberTwo;
+    console.log(newPosition);
+    play(newPosition);
+
+    console.log(`yuppi${Math.random() * 1}` < 0.5);
   }
-  function movePlayer() {
+  function startGame() {
+    for (let i = 0; i <= playerPlayingGame.length - 1; i += 1) {
+      console.log(playerPlayingGame.human[0]);
+    }
+    // move from menu screeen to game and show dice button
+    console.log(playerPlayingGame);
+  }
+  /*
+ function movePlayer() {
     const div = document.querySelector('#corner');
     const newChild = document.createElement('div');
     document.body.append(div, newChild);
   }
   movePlayer();
-  console.log(playerPlaying);
+*/
   return (
     // usar [...aarray, nuevoItem] en bottom para pushear
     <div className="game">
@@ -113,27 +50,38 @@ function Game() {
       WELLCOME TO THE GAME
       <div className="menu">
         <div className="humanPlayers">
-          <button type="button" disabled={disableButtonTopHat} onClick={() => addPlayer('hTopHat')} className="topHat  btngame">Top Hat</button>
-          <button type="button" disabled={disableButtonShip} onClick={() => addPlayer('hShip')} className="ship  btngame">Ship</button>
-          <button type="button" disabled={disableButtonDog} onClick={() => addPlayer('hDog')} className="dog  btngame">Dog</button>
-          <button type="button" disabled={disableButtonShoe} onClick={() => addPlayer('hShoe')} className="shoe  btngame">Shoe</button>
-          <button type="button" disabled={disableButtonCar} onClick={() => addPlayer('hCar')} className="car  btngame">Car</button>
-          <button type="button" disabled={disableButtonbird} onClick={() => addPlayer('hBird')} className="bird  btngame">Bird</button>
+          <button type="button" disabled={disableButtonTopHat} onClick={() => { playerPlayingGame.push(players.human[0]); setDisableButtonTopHat(false); }} className="topHat  btngame">Top Hat</button>
+          <button type="button" disabled={disableButtonShip} onClick={() => { playerPlayingGame.push(players.human[1]); setDisableButtonShip(false); }} className="ship  btngame">Ship</button>
+          <button type="button" disabled={disableButtonDog} onClick={() => { playerPlayingGame.push(players.human[2]); setDisableButtonDog(false); }} className="dog  btngame">Dog</button>
+          <button type="button" disabled={disableButtonShoe} onClick={() => { playerPlaying.push(players.human[3]); setDisableButtonShoe(true); }} className="shoe  btngame">Shoe</button>
+          <button type="button" disabled={disableButtonCar} onClick={() => { playerPlaying.push(players.human[4]); setDisableButtonCar(true); }} className="car  btngame">Car</button>
+          <button type="button" disabled={disableButtonbird} onClick={() => { playerPlaying.push(players.human[5]); setDisableButtonBird(true); }} className="bird  btngame">Bird</button>
 
         </div>
         <div className="aiPlayers">
-          <button type="button" disabled={disableButtonTopHat} onClick={() => addPlayer('aiTopHat')} className="topHat  btngame">Top Hat</button>
-          <button type="button" disabled={disableButtonShip} onClick={() => addPlayer('aiShip')} className="ship  btngame">Ship</button>
-          <button type="button" disabled={disableButtonDog} onClick={() => addPlayer('aiDog')} className="dog  btngame">Dog</button>
-          <button type="button" disabled={disableButtonShoe} onClick={() => addPlayer('aiShoep')} className="shoe  btngame">Shoe</button>
-          <button type="button" disabled={disableButtonCar} onClick={() => addPlayer('aiCar')} className="car  btngame">Car</button>
-          <button type="button" disabled={disableButtonbird} onClick={() => addPlayer('aiBird')} className="bird  btngame">Bird</button>
+          <button type="button" disabled={disableButtonTopHat} onClick={() => { playerPlaying.push(players.ai[0]); setDisableButtonTopHat(true); }} className="topHat  btngame">Top Hat</button>
+          <button type="button" disabled={disableButtonShip} onClick={() => { playerPlaying.push(players.ai[1]); setDisableButtonShip(true); }} className="ship  btngame">Ship</button>
+          <button type="button" disabled={disableButtonDog} onClick={() => { playerPlaying.push(players.ai[2]); setDisableButtonDog(true); }} className="dog  btngame">Dog</button>
+          <button type="button" disabled={disableButtonShoe} onClick={() => { playerPlaying.push(players.ai[3]); setDisableButtonShoe(true); }} className="shoe  btngame">Shoe</button>
+          <button type="button" disabled={disableButtonCar} onClick={() => { playerPlaying.push(players.ai[4]); setDisableButtonCar(true); }} className="car  btngame">Car</button>
+          <button type="button" disabled={disableButtonbird} onClick={() => { playerPlaying.push(players.ai[5]); setDisableButtonBird(true); }} className="bird  btngame">Bird</button>
 
         </div>
       </div>
       <div className="gridBard" />
       <div className="starGame">
         <button type="button" className="startGameBnt" onClick={() => startGame()}>Start Game</button>
+      </div>
+      <div className="rules">
+        <div className="classic">
+          <button type="button" className="classicBnt" onClick={() => startGame()}>Classic</button>
+        </div>
+        <div className="quick">
+          <button type="button" className="quickBnt" onClick={() => startGame()}>Quick</button>
+        </div>
+        <div className="custom">
+          <button type="button" className="customBnt" onClick={() => startGame()}>Custom</button>
+        </div>
       </div>
       <div className="dice">
         <button type="button" className="diceBnt" onClick={() => throwDice()}>Throw Dice</button>
