@@ -16,13 +16,13 @@ function Tycoon() {
         </div>
         <div className="container-bottom">
           <div className="bottom-left">
-            <Link className="settings" to="/mode">
+            <Link className="play" to="/mode">
               <button type="button" className="button-left"> </button>
             </Link>
           </div>
           <div className="bottom-right">
             <div className="top-two">
-              <Link className="ddd" to="/mode">
+              <Link className="dd" to="/mode">
                 <button type="button" className="top-twobnt"> </button>
               </Link>
             </div>
