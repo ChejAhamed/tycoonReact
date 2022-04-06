@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Game.css';
-import BoardPlayer from '../const/Board';
+import BoardPlayer from '../../const/Board';
 
 function Game() {
   const [disableButtonTopHat, setDisableButtonTopHat] = useState(false);

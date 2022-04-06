@@ -44,7 +44,7 @@
 .btngame {
     
     margin: 0.3rem;
-    background-image: url("../../boris.jpg");
+    background-image: url('../../../boris.jpg');
     width: 4rem;
     height: 4rem;
     color: azure;
@@ -57,7 +57,7 @@ board styles
  .board{
     width: 800px;
     height: 800px;
-    background-image: url('../../pictures/tycoon.png');
+    background-image: url('../../../pictures/tycoon.png');
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -138,7 +138,7 @@ board styles
     
 }
 .player1::after{
-    content: url("../../boris.jpg");
+    content: url("../../../boris.jpg");
     position: absolute;
     bottom: 0;
 
@@ -149,7 +149,7 @@ board styles
     height: 2rem;
     image-rendering: calc(25);
     border-image-width: 3rem;
-    background-image:url("../../boris.jpg");
+    background-image:url("../../../boris.jpg");
     
 }
 img:hover {
