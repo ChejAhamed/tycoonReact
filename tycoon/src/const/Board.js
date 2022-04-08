@@ -41,139 +41,13 @@ console.log(playerss);
 let playerNumber;
 const playersLost = [];
 const logoShip = 'https://cdn.imgbin.com/23/13/17/imgbin-monopoly-brik-board-game-hasbro-spaceship-DU2tuutaCF0HgpGXAgRbfKKSv.jpg';
-const players = {
-  human: [{
+const players = [
+  {
     id: 1,
-    name: 'Mark',
-    piece: 'shoe',
-    currentSpace: 1,
-    logo: logoShip,
-    isBankrupt: false,
-    money: 1500,
-    properties: [],
-    propertyNameList: [],
-    rrOwned: 0,
-    inJail: false,
-    doubles: false,
-    jailRoll: 0,
-    movePlayer(newLocation) {
-      // add login to handle number over 40
-
-      players.currentSpace += newLocation;
-    },
-
-    makeAChoice() {
-      if (Math.random() * 1 < 0.5) {
-        return true;
-      }
-      return false;
-    },
-
-    buyProperty(thisProperty) {
-      if (this.money >= thisProperty.value) {
-        // pay for the property
-        this.money -= thisProperty.value;
-        // set purchased value to true
-        thisProperty.purchased = true;
-        // set this player as owner
-        thisProperty.ownedBy = playerNumber;
-        console.log(playerNumber);
-        // push this into a list of properties owned by this player
-        this.properties.push(thisProperty);
-        // console.log(this.name+" just bought "+ thisProperty.name +"for $"+ thisProperty.value);
-        // console.log(`${this.name} now owns ${thisProperty.name}! Enjoy!`);
-      } else {
-        console.log(`You can't afford ${thisProperty.name}, ${this.name}`);
-      }
-    },
-
-    propertyNames() {
-      for (let i = 0; i < this.properties.length; i += 1) {
-        this.propertyNameList.push(this.properties[i].name);
-        console.log(i);
-      }
-      return this.propertyNameList;
-    },
-  },
-  {
-    name: 'Sabaa',
-    piece: 'Dog',
-    currentSpace: 1,
-    isBankrupt: false,
-    money: 1500,
-    properties: [],
-    rrOwned: 0,
-    inJail: false,
-    doubles: false,
-    jailRoll: 0,
-
-    makeAChoice() {
-      if (Math.random() * 1 < 0.5) {
-        return true;
-      }
-      return false;
-    },
-
-    buyProperty(thisProperty) {
-      if (this.money >= thisProperty.value) {
-        // pay for the property
-        this.money -= thisProperty.value;
-        // set purchased value to true
-        thisProperty.purchased = true;
-        // set this player as owner
-        thisProperty.ownedBy = playerNumber;
-        console.log(playerNumber);
-        // push this into a list of properties owned by this player
-        this.properties.push(thisProperty);
-        // console.log(this.name+" just bought "+ thisProperty.name +"for $"+ thisProperty.value);
-        // console.log(`${this.name} now owns ${thisProperty.name}! Enjoy!`);
-      } else {
-        console.log(`You can't afford ${thisProperty.name}, ${this.name}`);
-      }
-    },
-  },
-  {
-    name: 'Fer',
-    piece: 'Top Hat',
-    currentSpace: 1,
-    isBankrupt: false,
-    money: 1500,
-    properties: [],
-    rrOwned: 0,
-    inJail: false,
-    doubles: false,
-    jailRoll: 0,
-
-    makeAChoice() {
-      if (Math.random() * 1 < 0.5) {
-        return true;
-      }
-      return false;
-    },
-
-    buyProperty(thisProperty) {
-      if (this.money >= thisProperty.value) {
-        // pay for the property
-        this.money -= thisProperty.value;
-        // set purchased value to true
-        thisProperty.purchased = true;
-        // set this player as owner
-        thisProperty.ownedBy = playerNumber;
-        console.log(playerNumber);
-        // push this into a list of properties owned by this player
-        this.properties.push(thisProperty);
-        // console.log(this.name+" just bought "+ thisProperty.name +"for $"+ thisProperty.value);
-        // console.log(`${this.name} now owns ${thisProperty.name}! Enjoy!`);
-      } else {
-        console.log(`You can't afford ${thisProperty.name}, ${this.name}`);
-      }
-    },
-  }],
-  ai: [{
     name: 'Dennis',
     piece: 'shoe',
-    currentSpace: 1,
     logo: logoShip,
+    currentSpace: 1,
     isBankrupt: false,
     money: 1500,
     properties: [],
@@ -182,11 +56,6 @@ const players = {
     inJail: false,
     doubles: false,
     jailRoll: 0,
-    movePlayer(newLocation) {
-      // add login to handle number over 40
-
-      players.currentSpace += newLocation;
-    },
 
     makeAChoice() {
       if (Math.random() * 1 < 0.5) {
@@ -206,7 +75,7 @@ const players = {
         console.log(playerNumber);
         // push this into a list of properties owned by this player
         this.properties.push(thisProperty);
-        // console.log(this.name+" just bought "+ thisProperty.name +"for $"+ thisProperty.value);
+        // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
         // console.log(`${this.name} now owns ${thisProperty.name}! Enjoy!`);
       } else {
         console.log(`You can't afford ${thisProperty.name}, ${this.name}`);
@@ -222,8 +91,10 @@ const players = {
     },
   },
   {
+    id: 2,
     name: 'Amanda',
     piece: 'Dog',
+    logo: logoShip,
     currentSpace: 1,
     isBankrupt: false,
     money: 1500,
@@ -251,7 +122,7 @@ const players = {
         console.log(playerNumber);
         // push this into a list of properties owned by this player
         this.properties.push(thisProperty);
-        // console.log(this.name+" just bought "+ thisProperty.name +"for $"+ thisProperty.value);
+        // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
         // console.log(`${this.name} now owns ${thisProperty.name}! Enjoy!`);
       } else {
         console.log(`You can't afford ${thisProperty.name}, ${this.name}`);
@@ -259,8 +130,10 @@ const players = {
     },
   },
   {
+    id: 3,
     name: 'Snickers',
     piece: 'Top Hat',
+    logo: logoShip,
     currentSpace: 1,
     isBankrupt: false,
     money: 1500,
@@ -288,14 +161,14 @@ const players = {
         console.log(playerNumber);
         // push this into a list of properties owned by this player
         this.properties.push(thisProperty);
-        // console.log(this.name+" just bought "+ thisProperty.name +"for $"+ thisProperty.value);
+        // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
         // console.log(`${this.name} now owns ${thisProperty.name}! Enjoy!`);
       } else {
         console.log(`You can't afford ${thisProperty.name}, ${this.name}`);
       }
     },
-  }],
-};
+  },
+];
 function youLose(player) {
   console.log(player);
   playersLost.push(player[playerNumber]);
