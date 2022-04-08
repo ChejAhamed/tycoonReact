@@ -13,10 +13,8 @@ function Game() {
   const [disableButtonDog, setDisableButtonDog] = useState(false);
   const [disableButtonCar, setDisableButtonCar] = useState(false);
   const [disableButtonbird, setDisableButtonBird] = useState(false);
-  const { players } = BoardPlayer;
   const { theBoard } = BoardPlayer;
-  const player = players.human[1];
-  console.log(player);
+  const players = BoardPlayer.players.human;
   let playerNumber = 0;
   let currentRoll = 0;
   const logoShip = 'https://cdn.imgbin.com/23/13/17/imgbin-monopoly-brik-board-game-hasbro-spaceship-DU2tuutaCF0HgpGXAgRbfKKSv.jpg';
@@ -147,12 +145,11 @@ function Game() {
       }
     },
   },
-
   ];
   console.log(theBoard);
   console.log(players);
   const playerPlaying = [];
-
+  console.log(players.length);
   function throwDice() {
     const numberOne = Math.floor(Math.random() * (6 - 1 + 1) + 1);
     const numberTwo = Math.floor(Math.random() * (6 - 1 + 1) + 1);
@@ -272,7 +269,7 @@ function Game() {
   function switchPlayer() {
     if (!players[playerNumber].doubles) {
       playerNumber += 1;
-      if (playerNumber >= players.length) {
+      if (playerNumber >= players.keys(players).length) {
         playerNumber = 0;
         theBoard[players[playerNumber].currentSpace] = theBoard[players[playerNumber].currentSpace];
       } else {
