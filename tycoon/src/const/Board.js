@@ -296,12 +296,15 @@ const players = {
     },
   }],
 };
-
-/// lose function
 function youLose(player) {
-  playersLost.push(player);
+  console.log(player);
+  playersLost.push(player[playerNumber]);
+  player.isBankrupt = true;
+  player.doubles = false;
+  console.log(`${player.name}, you are broke. You lose.`);
+  // players.splice(playerNumber, 1);
+  console.log(players);
 }
-
 const theBoard = [
   {
     name: 'Jail',
@@ -1622,5 +1625,6 @@ const theBoard = [
     },
   },
 ];
+
 console.log(players);
 export default { players, theBoard };
