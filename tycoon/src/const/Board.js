@@ -65,7 +65,7 @@ const players = [
     },
 
     buyProperty(thisProperty) {
-      if (this.money >= thisProperty.value) {
+      if (this.money >= thisProperty?.value) {
         // pay for the property
         this.money -= thisProperty.value;
         // set purchased value to true
@@ -76,9 +76,9 @@ const players = [
         // push this into a list of properties owned by this player
         this.properties.push(thisProperty);
         // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
-        // console.log(`${this.name} now owns ${thisProperty.name}! Enjoy!`);
+        // console.log(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
       } else {
-        console.log(`You can't afford ${thisProperty.name}, ${this.name}`);
+        console.log(`You can't afford ${thisProperty?.name}, ${this.name}`);
       }
     },
 
@@ -112,7 +112,7 @@ const players = [
     },
 
     buyProperty(thisProperty) {
-      if (this.money >= thisProperty.value) {
+      if (this.money >= thisProperty?.value) {
         // pay for the property
         this.money -= thisProperty.value;
         // set purchased value to true
@@ -123,9 +123,9 @@ const players = [
         // push this into a list of properties owned by this player
         this.properties.push(thisProperty);
         // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
-        // console.log(`${this.name} now owns ${thisProperty.name}! Enjoy!`);
+        // console.log(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
       } else {
-        console.log(`You can't afford ${thisProperty.name}, ${this.name}`);
+        console.log(`You can't afford ${thisProperty?.name}, ${this.name}`);
       }
     },
   },
@@ -151,7 +151,7 @@ const players = [
     },
 
     buyProperty(thisProperty) {
-      if (this.money >= thisProperty.value) {
+      if (this.money >= thisProperty?.value) {
         // pay for the property
         this.money -= thisProperty.value;
         // set purchased value to true
@@ -162,9 +162,9 @@ const players = [
         // push this into a list of properties owned by this player
         this.properties.push(thisProperty);
         // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
-        // console.log(`${this.name} now owns ${thisProperty.name}! Enjoy!`);
+        // console.log(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
       } else {
-        console.log(`You can't afford ${thisProperty.name}, ${this.name}`);
+        console.log(`You can't afford ${thisProperty?.name}, ${this.name}`);
       }
     },
   },
@@ -233,7 +233,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -297,7 +297,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -352,7 +352,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -394,7 +394,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -444,7 +444,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -486,7 +486,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -540,7 +540,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -582,7 +582,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -624,7 +624,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -666,7 +666,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -708,7 +708,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -750,7 +750,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -800,7 +800,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -842,7 +842,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -893,7 +893,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -943,7 +943,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -985,7 +985,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -1027,7 +1027,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -1069,7 +1069,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -1111,7 +1111,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -1153,7 +1153,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -1195,7 +1195,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -1249,7 +1249,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -1299,7 +1299,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -1341,7 +1341,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -1383,7 +1383,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -1433,7 +1433,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -1490,7 +1490,7 @@ const theBoard = [
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber].currentSpace]);
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
         } else {
           console.log(`${player.name} declined to buy ${this.name}`);
         }
@@ -1498,6 +1498,38 @@ const theBoard = [
     },
   },
 ];
+const communityChest = [
+  {
+    title: 'Life insurance matures. Collect $100.',
+    pulled: false,
 
+    cardAction(player) {
+      player.money += 100;
+    },
+  },
+  {
+    title: 'Xmas fund matures. Collect $100.',
+    pulled: false,
+
+    cardAction(player) {
+      player.money += 100;
+    },
+  },
+  {
+    title: 'Advance to GO!',
+    pulled: false,
+
+    cardAction(player) {
+      player.currentSpace = 1;
+      theBoard[player.currentSpace].spaceAction(player);
+    },
+  },
+  {
+    title:
+      'Grand Opera opening. Collect $50 from every player for opening night seats.',
+  },
+];
+console.log(theBoard[players[playerNumber]]);
+console.log(communityChest);
 console.log(players);
 export default { players, theBoard };
