@@ -5,7 +5,7 @@
 /* eslint-disable no-self-assign */
 /* eslint-disable no-shadow */
 /* eslint-disable no-param-reassign */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Game.css';
 import BoardPlayer from '../../const/Board';
 
@@ -18,6 +18,9 @@ function Game() {
   const [disableButtonbird, setDisableButtonBird] = useState(false);
   const { theBoard } = BoardPlayer;
   const { players } = BoardPlayer;
+  useEffect(() => {
+    players.money;
+  }, []);
   console.log(players);
   let playerNumber = 0;
   let currentRoll = 0;
@@ -597,16 +600,37 @@ function Game() {
           <div className="infoWindow">
             <div className="playerList">
               <div className="playerListname">
-                player list
+                <p>Players Playing</p>
+                {players.map((player) => <div key={player.id} className="names">{player.name}</div>)}
               </div>
               <div className="moneyPlayerList">
-                <p>name</p>
-                player list
+                <p>Players Money</p>
+                {players.map((player) => <div key={player.id} className="money">{player.money}</div>)}
+              </div>
+              <div className="playerListProperty">
+                <p>Number of Propierties</p>
+                {players.map((player) => <div key={player.id} className="properties">{player.properties.length}</div>)}
               </div>
 
             </div>
             <div className="playerDetails">
-              details palyer
+              <p>Players Details:</p>
+              <div className="playerName">
+                <p>Name:</p>
+                {players[playerNumber].name}
+              </div>
+              <div className="playerName">
+                <p>Players Money:</p>
+                {players[playerNumber].money}
+              </div>
+              <div className="playerName">
+                <p>Number Of Properties:</p>
+                {players[playerNumber].properties.length}
+              </div>
+              <div className="playerlogo">
+                <img className="logo" src={players[playerNumber].logo} width="60rem" height="60rem" alt="logo" />
+              </div>
+
             </div>
 
           </div>
