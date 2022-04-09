@@ -155,3 +155,23 @@ board styles
 img:hover {
     opacity: 70%;
 }
+
+.rules{
+    width: auto;
+    height: auto;
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+.startGame {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-content: space-around;
+    align-items: center;
+}
