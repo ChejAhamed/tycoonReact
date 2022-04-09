@@ -615,22 +615,23 @@ function Game() {
             </div>
             <div className="playerDetails">
               <p>Players Details:</p>
-              <div className="playerName">
-                <p>Name:</p>
-                {players[playerNumber].name}
+              <div className="playerContainer">
+                <div className="playerName">
+                  <p>Name:</p>
+                  {players[playerNumber].name}
+                </div>
+                <div className="playerMoney">
+                  <p>Players Money:</p>
+                  {players[playerNumber].money}
+                </div>
+                <div className="playerProperties">
+                  <p>Number Of Properties:</p>
+                  {players[playerNumber].properties.length}
+                </div>
+                <div className="playerlogo">
+                  <img className="logo" src={players[playerNumber].logo} width="60rem" height="60rem" alt="logo" />
+                </div>
               </div>
-              <div className="playerName">
-                <p>Players Money:</p>
-                {players[playerNumber].money}
-              </div>
-              <div className="playerName">
-                <p>Number Of Properties:</p>
-                {players[playerNumber].properties.length}
-              </div>
-              <div className="playerlogo">
-                <img className="logo" src={players[playerNumber].logo} width="60rem" height="60rem" alt="logo" />
-              </div>
-
             </div>
 
           </div>

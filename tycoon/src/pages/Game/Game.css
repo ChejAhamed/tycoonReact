@@ -188,8 +188,6 @@ img:hover {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
 }
 .playerList{
     width: auto;
@@ -219,7 +217,6 @@ img:hover {
 
 
 /*loader
-*/
 
 .loader-warapper {
     width: 30rem;
@@ -251,5 +248,54 @@ img:hover {
     }100%{
         transform: scale(1) rotate(360deg)
     }
+    
+}*/
+.playerList{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 6rem;
+    margin-left: 2rem;
+    background-color: azure;
+    
+}
+.playerListname{
+    margin: 0.5rem;
+}
+.moneyPlayerList{
+    margin: 0.5rem;
+}
+.playerListProperty{
+    margin: 0.5rem;
+}
+.playerDetails{
+    margin-top: 6rem;
+    margin-left: 2rem;
+    background-color: azure;
+}
+.playerLogo{
+    width: 15rem;
+    height: 15rem;
+   
+    
+}
+.logo{
+     border-radius: 4rem;
+}
+.playerDetails{
+    display: flex;
+    align-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+}
+.playerContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+.playerName .playerMoney .playerProperties .playerlogo{
+    margin:3rem;
     
 }
