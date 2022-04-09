@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-undef */
 /* eslint-disable react/no-this-in-sfc */
@@ -153,6 +154,7 @@ function Game() {
   console.log(players);
   const playerPlaying = [];
   console.log(players.length);
+  /*
   function throwDice() {
     const numberOne = Math.floor(Math.random() * (6 - 1 + 1) + 1);
     const numberTwo = Math.floor(Math.random() * (6 - 1 + 1) + 1);
@@ -162,14 +164,7 @@ function Game() {
 
     console.log(`yuppi${Math.random() * 1}` < 0.5);
   }
-  function startGame() {
-    for (let i = 0; i <= players.length - 1; i += 1) {
-      console.log(playerPlayingGame[i]);
-    }
-    // move from menu screeen to game and show dice button
-    console.log(playerPlayingGame);
-  }
-
+  */
   /* TYLER DICE
   let rollDice = (n) => {
   return new Array(n).fill(0).reduce((accumulator) => {
@@ -272,6 +267,7 @@ function Game() {
   function switchPlayer() {
     if (!players[playerNumber].doubles) {
       playerNumber += 1;
+      console.log(players);
       console.log(`space ${playerNumber}`);
       if (playerNumber >= players.length) {
         playerNumber = 0;
@@ -293,13 +289,12 @@ function Game() {
   /** *takes the current space value of the player and uses it to find the name
    * of the current space on the board
  * */
-
-  /** *mimic player activity* */
-  for (let i = 0; i < 60; i += 1) {
-    console.log(' ');
-    console.log(`ITERATION ${i}`);
+  function throwDice() {
+    // move from menu screeen to game and show dice button
+    console.log(playerPlayingGame);
     if (players[playerNumber].isBankrupt) {
       console.log(`No more turns for you, ${players[playerNumber].name}`);
+      alert(`No more turns for you, ${players[playerNumber].name}`);
     } else {
       console.log(
         `${players[playerNumber].name} is on ${
@@ -319,6 +314,32 @@ function Game() {
     }
     switchPlayer();
   }
+  /** *mimic player activity*
+  for (let i = 0; i < 60; i += 1) {
+    console.log(' ');
+    console.log(`ITERATION ${i}`);
+    if (players[playerNumber].isBankrupt) {
+      console.log(`No more turns for you, ${players[playerNumber].name}`);
+      alert(`No more turns for you, ${players[playerNumber].name}`);
+    } else {
+      console.log(
+        `${players[playerNumber].name} is on ${
+          theBoard[players[playerNumber].currentSpace].name
+        } and has $${players[playerNumber].money}.`,
+      );
+      // inJail(player)
+      playerTurn(players[playerNumber]);
+      // rollDice();
+      // movePlayer(players[playerNumber]);
+      // whichSpace(theBoard[players[playerNumber].currentSpace]);
+      console.log(
+        `${players[playerNumber].name} is on ${
+          theBoard[players[playerNumber].currentSpace].name
+        } and has $${players[playerNumber].money}.`,
+      );
+    }
+    switchPlayer();
+  } */
 
   const chanceCards = [
     {
@@ -489,14 +510,26 @@ function Game() {
   movePlayer();
 */
   const [showGame, setShowGame] = React.useState(false);
+
   return (
     // usar [...aarray, nuevoItem] en bottom para pushear
     <div className="game">
       {showGame ? (
         <div className="secondWindow">
+          <div className="loader-wrapper">
+            <div className="loader">
+              <div className="loader loader-inner" />
+
+            </div>
+          </div>
           <div className="boardGameSec">
             <div className="dice">
               <button type="button" className="diceBnt" onClick={() => throwDice()}>Throw Dice</button>
+              <div className="diceContainer">
+                <div className="diceOne" />
+                <div className="diceTwo" />
+              </div>
+
             </div>
             <div id="board" className="board">
               <div className="top">
@@ -563,7 +596,14 @@ function Game() {
           </div>
           <div className="infoWindow">
             <div className="playerList">
-              player list
+              <div className="playerListname">
+                player list
+              </div>
+              <div className="moneyPlayerList">
+                <p>name</p>
+                player list
+              </div>
+
             </div>
             <div className="playerDetails">
               details palyer
@@ -612,7 +652,7 @@ function Game() {
             </div>
           </div>
           <div className="starGame">
-            <button type="button" className="startGameBnt" onClick={() => { startGame(); setShowGame(true); }}>Start Game</button>
+            <button type="button" className="startGameBnt" onClick={() => { setShowGame(true); }}>Start Game</button>
           </div>
         </div>
 
