@@ -25,7 +25,7 @@ function Header() {
               </CNavLink>
             </CNavItem>
             <CNavItem>
-              <CNavLink href="/tycoon" active>
+              <CNavLink href="/game" active>
                 Tycoon
               </CNavLink>
             </CNavItem>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-curly-brace-presence */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-undef */
@@ -6,9 +7,12 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-param-reassign */
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import loadPlayers from '../../redux/actions/actionCreator';
 import './Game.css';
 import BoardPlayer from '../../const/Board';
 
+console.log(loadPlayers);
 function Game() {
   const [disableButtonTopHat, setDisableButtonTopHat] = useState(false);
   const [disableButtonShip, setDisableButtonShip] = useState(false);
@@ -16,6 +20,8 @@ function Game() {
   const [disableButtonDog, setDisableButtonDog] = useState(false);
   const [disableButtonCar, setDisableButtonCar] = useState(false);
   const [disableButtonbird, setDisableButtonBird] = useState(false);
+  const [showGame, setShowGame] = useState(false);
+  const dispatch = useDispatch();
   const { theBoard } = BoardPlayer;
   const { players } = BoardPlayer;
   const { throwDice } = BoardPlayer;
@@ -23,72 +29,22 @@ function Game() {
   function throwDices() {
     throwDice();
   }
+  /*
+  const loadPlayers = useSelector((store) => store.loadPayers);
+  useEffect(() => {
+    dispatch(loadPlayers);
+  }, []);
+  */
   console.log(theBoard[15]);
   console.log(players);
   const playerPlayingGame = [
   ];
   console.log(theBoard);
-  console.log(players);
+  console.log(loadPlayers);
   const playerPlaying = [];
   console.log(players.length);
-  /*
-  function throwDice() {
-    const numberOne = Math.floor(Math.random() * (6 - 1 + 1) + 1);
-    const numberTwo = Math.floor(Math.random() * (6 - 1 + 1) + 1);
-    const newPosition = numberOne + numberTwo;
-    console.log(newPosition);
-    // git merplay(newPosition);
-
-    console.log(`yuppi${Math.random() * 1}` < 0.5);
-  }
-  */
-  /* TYLER DICE
-  let rollDice = (n) => {
-  return new Array(n).fill(0).reduce((accumulator) => {
-    return accumulator + Math.floor(Math.random() * 6 + 1);
-  }, 0);
-  };
-  */
-
-  /** *roll dice. Made  2 dice in case of expansion to graphics to match 2 die* */
-  /** *mimic player activity*
-  for (let i = 0; i < 60; i += 1) {
-    console.log(' ');
-    console.log(`ITERATION ${i}`);
-    if (players[playerNumber].isBankrupt) {
-      console.log(`No more turns for you, ${players[playerNumber].name}`);
-      alert(`No more turns for you, ${players[playerNumber].name}`);
-    } else {
-      console.log(
-        `${players[playerNumber].name} is on ${
-          theBoard[players[playerNumber].currentSpace].name
-        } and has $${players[playerNumber].money}.`,
-      );
-      // inJail(player)
-      playerTurn(players[playerNumber]);
-      // rollDice();
-      // movePlayer(players[playerNumber]);
-      // whichSpace(theBoard[players[playerNumber].currentSpace]);
-      console.log(
-        `${players[playerNumber].name} is on ${
-          theBoard[players[playerNumber].currentSpace].name
-        } and has $${players[playerNumber].money}.`,
-      );
-    }
-    switchPlayer();
-  } */
-
-  /*
- function movePlayer() {
-    const div = document.querySelector('#corner');
-    const newChild = document.createElement('div');
-    document.body.append(div, newChild);
-  }
-  movePlayer();
-*/
-  const [showGame, setShowGame] = React.useState(false);
   useEffect(() => {
-    players[playerNumber].name;
+    players[playerNumber];
   }, []);
   return (
     // usar [...aarray, nuevoItem] en bottom para pushear
@@ -166,6 +122,7 @@ function Game() {
             </div>
             <div className="dialogPlayer">
               <div className="dialogInfo">
+                {loadPlayers}
                 {players[playerNumber].name}
                 {' '}
                 {' '}
@@ -179,7 +136,7 @@ function Game() {
                 {players[playerNumber].money}
               </div>
               <div className="dialogAction">
-                <button type="button" className="buttonAction" onClick={() => { players[playerNumber].buyProperty; }}>Buy Property</button>
+                <button type="button" className="buttonAction" onClick={() => { players[playerNumber].buyProperty(theBoard[players[playerNumber].currentSpace]); }}>Buy Property</button>
                 <button type="button" className="buttonAction" onClick={() => { throwDices(); }}>Throw Dice</button>
               </div>
             </div>
