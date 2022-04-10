@@ -18,9 +18,7 @@ function Game() {
   const [disableButtonbird, setDisableButtonBird] = useState(false);
   const { theBoard } = BoardPlayer;
   const { players } = BoardPlayer;
-  useEffect(() => {
-    players.money;
-  }, []);
+
   console.log(players);
   let playerNumber = 0;
   let currentRoll = 0;
@@ -513,7 +511,9 @@ function Game() {
   movePlayer();
 */
   const [showGame, setShowGame] = React.useState(false);
-
+  useEffect(() => {
+    players[playerNumber].name;
+  }, []);
   return (
     // usar [...aarray, nuevoItem] en bottom para pushear
     <div className="game">
@@ -590,10 +590,21 @@ function Game() {
             </div>
             <div className="dialogPlayer">
               <div className="dialogInfo">
-                info
+                {players[playerNumber].name}
+                {' '}
+                {' '}
+                is on
+                {' '}
+                {theBoard[players[playerNumber].currentSpace].name}
+                {' '}
+                {' '}
+                and has
+                {' '}
+                {players[playerNumber].money}
               </div>
               <div className="dialogAction">
-                buttons
+                <button type="button" className="buttonAction" onClick={() => { players[playerNumber].buyProperty; }}>Buy Property</button>
+                <button type="button" className="buttonAction" onClick={() => { throwDice(); }}>Throw Dice</button>
               </div>
             </div>
           </div>
@@ -625,7 +636,7 @@ function Game() {
                   {players[playerNumber].money}
                 </div>
                 <div className="playerProperties">
-                  <p>Number Of Properties:</p>
+                  <p>Properties:</p>
                   {players[playerNumber].properties.length}
                 </div>
                 <div className="playerlogo">

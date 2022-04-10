@@ -1,9 +1,3 @@
-const playerss = {
-  du: 2,
-  z: 3,
-};
-console.log(playerss);
-
 /* eslint-disable no-param-reassign */
 // const currentPosition = 0;
 
@@ -78,7 +72,7 @@ const players = [
         // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
         // console.log(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
       } else {
-        console.log(`You can't afford ${thisProperty?.name}, ${this.name}`);
+        console.log(`You can't afford ${thisProperty?.name}, ${this?.name}`);
       }
     },
 
@@ -153,6 +147,7 @@ const players = [
     buyProperty(thisProperty) {
       if (this.money >= thisProperty?.value) {
         // pay for the property
+        console.log(thisProperty);
         this.money -= thisProperty.value;
         // set purchased value to true
         thisProperty.purchased = true;
@@ -165,6 +160,7 @@ const players = [
         // console.log(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
       } else {
         console.log(`You can't afford ${thisProperty?.name}, ${this.name}`);
+        console.log(thisProperty);
       }
     },
   },
