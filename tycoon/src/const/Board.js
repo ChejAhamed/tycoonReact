@@ -1,69 +1,65 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable eqeqeq */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-self-assign */
 /* eslint-disable no-undef */
 /* eslint-disable no-param-reassign */
 // const currentPosition = 0;
-
-// testing functionality for rotating the stage for players turns
-// function rotateTheStage() {
-//   //delete current
-//   const boardPositions = [0, 90, 180, 270, 360];
-//   //when it hits 360, it resets to 0
-
-//   //exchanging styles
-//   document
-//     .querySelector('#gameBoard')
-//     .classList.replace(
-//       `stage${boardPositions[currentPosition]}`,
-//       `stage${boardPositions[currentPosition + 1]}`
-//     );
-
-//   currentPosition += 1;
-//   if (currentPosition === 5) {
-//     document
-//       .querySelector('#gameBoard')
-//       .classList.replace(
-//         `stage${boardPositions[currentPosition]}`,
-//         `stage${boardPositions[0]}`
-//       );
-//     console.log('currentPosition is ' + currentPosition);
-//     currentPosition = 0;
-//     console.log('currentPosition reset to ' + currentPosition);
-//   }
-// }
-
-// document
-//   .querySelector('#rotateStageButton')
-//   .addEventListener('click', rotateTheStage);
+import BootLogo from '../assets/Boot.png';
+import IronLogo from '../assets/Iron.png';
+import HatStandLogo from '../assets/Hat_Stand.png';
+import MobilePhoneLogo from '../assets/Mobile Phone.png';
+import ShipLogo from '../assets/Ship.png';
+import CatLogo from '../assets/Cat.png';
 
 let playerNumber = 0;
 let currentRoll = 0;
 const playersLost = [];
-const logoShip = 'https://cdn.imgbin.com/23/13/17/imgbin-monopoly-brik-board-game-hasbro-spaceship-DU2tuutaCF0HgpGXAgRbfKKSv.jpg';
+const makeAChoice = () => {
+  if (Math.random() * 1 < 0.5) {
+    return true;
+  }
+  return false;
+};
+/* const buyProperty = (player, property) => {
+  if (player.money >= property?.value) {
+    // pay for the property
+    player.money -= property.value
+    // set purchased value to true
+    property.purchased = true
+    // set this player as owner
+    property.ownedBy = player.id
+    // push this into a list of properties owned by this player
+    player.properties.push(property)
+  }
+}
+const propertyNames = player => {
+  const propertyNameList = []
+  for (let i = 0; i < this.properties.length; i += 1) {
+    propertyNameList.push(player.properties[i].name)
+  }
+  return propertyNameList
+}
+*/
 const players = [
   {
     id: 1,
-    name: 'Dennis',
-    piece: 'shoe',
-    logo: logoShip,
+    name: 'Boot',
+    piece: 'boot',
+    logo: BootLogo,
     currentSpace: 1,
     isBankrupt: false,
-    money: 1500,
+    money: -5,
     properties: [],
     propertyNameList: [],
     rrOwned: 0,
     inJail: false,
     doubles: false,
     jailRoll: 0,
-
-    makeAChoice() {
-      if (Math.random() * 1 < 0.5) {
-        return true;
-      }
-      return false;
-    },
-
     buyProperty(thisProperty) {
+      if (thisProperty.purchased == true) {
+        alert('This property is aldrey owned');
+      }
       if (this.money >= thisProperty?.value) {
         // pay for the property
         this.money -= thisProperty.value;
@@ -77,7 +73,7 @@ const players = [
         // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
         // console.log(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
       } else {
-        console.log(`You can't afford ${thisProperty?.name}, ${this?.name}`);
+        const message = `You can't afford ${thisProperty?.name}, ${this?.name}`;
       }
     },
 
@@ -91,9 +87,9 @@ const players = [
   },
   {
     id: 2,
-    name: 'Amanda',
-    piece: 'Dog',
-    logo: logoShip,
+    name: 'Iron',
+    piece: 'iron',
+    logo: IronLogo,
     currentSpace: 1,
     isBankrupt: false,
     money: 1500,
@@ -102,15 +98,10 @@ const players = [
     inJail: false,
     doubles: false,
     jailRoll: 0,
-
-    makeAChoice() {
-      if (Math.random() * 1 < 0.5) {
-        return true;
-      }
-      return false;
-    },
-
     buyProperty(thisProperty) {
+      if (thisProperty.purchased == true) {
+        alert('This property is aldrey owned');
+      }
       if (this.money >= thisProperty?.value) {
         // pay for the property
         this.money -= thisProperty.value;
@@ -124,15 +115,23 @@ const players = [
         // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
         // console.log(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
       } else {
-        console.log(`You can't afford ${thisProperty?.name}, ${this.name}`);
+        const message = `You can't afford ${thisProperty?.name}, ${this?.name}`;
       }
+    },
+
+    propertyNames() {
+      for (let i = 0; i < this.properties.length; i += 1) {
+        this.propertyNameList.push(this.properties[i].name);
+        console.log(i);
+      }
+      return this.propertyNameList;
     },
   },
   {
     id: 3,
-    name: 'Snickers',
-    piece: 'Top Hat',
-    logo: logoShip,
+    name: 'Hat Stand',
+    piece: 'hatStand',
+    logo: HatStandLogo,
     currentSpace: 1,
     isBankrupt: false,
     money: 1500,
@@ -141,18 +140,12 @@ const players = [
     inJail: false,
     doubles: false,
     jailRoll: 0,
-
-    makeAChoice() {
-      if (Math.random() * 1 < 0.5) {
-        return true;
-      }
-      return false;
-    },
-
     buyProperty(thisProperty) {
+      if (thisProperty.purchased == true) {
+        alert('This property is aldrey owned');
+      }
       if (this.money >= thisProperty?.value) {
         // pay for the property
-        console.log(thisProperty);
         this.money -= thisProperty.value;
         // set purchased value to true
         thisProperty.purchased = true;
@@ -164,21 +157,152 @@ const players = [
         // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
         // console.log(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
       } else {
-        console.log(`You can't afford ${thisProperty?.name}, ${this.name}`);
-        console.log(thisProperty);
+        const message = `You can't afford ${thisProperty?.name}, ${this?.name}`;
       }
+    },
+
+    propertyNames() {
+      for (let i = 0; i < this.properties.length; i += 1) {
+        this.propertyNameList.push(this.properties[i].name);
+        console.log(i);
+      }
+      return this.propertyNameList;
+    },
+  },
+  {
+    id: 4,
+    name: 'Mobile Phone',
+    piece: 'Mobile Phone',
+    logo: MobilePhoneLogo,
+    currentSpace: 1,
+    isBankrupt: false,
+    money: 1500,
+    properties: [],
+    rrOwned: 0,
+    inJail: false,
+    doubles: false,
+    jailRoll: 0,
+    buyProperty(thisProperty) {
+      if (thisProperty.purchased == true) {
+        alert('This property is aldrey owned');
+      }
+      if (this.money >= thisProperty?.value) {
+        // pay for the property
+        this.money -= thisProperty.value;
+        // set purchased value to true
+        thisProperty.purchased = true;
+        // set this player as owner
+        thisProperty.ownedBy = playerNumber;
+        console.log(playerNumber);
+        // push this into a list of properties owned by this player
+        this.properties.push(thisProperty);
+        // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
+        // console.log(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
+      } else {
+        const message = `You can't afford ${thisProperty?.name}, ${this?.name}`;
+      }
+    },
+
+    propertyNames() {
+      for (let i = 0; i < this.properties.length; i += 1) {
+        this.propertyNameList.push(this.properties[i].name);
+        console.log(i);
+      }
+      return this.propertyNameList;
+    },
+  },
+  {
+    id: 5,
+    name: 'Ship',
+    piece: 'ship',
+    logo: ShipLogo,
+    currentSpace: 1,
+    isBankrupt: false,
+    money: 1500,
+    properties: [],
+    rrOwned: 0,
+    inJail: false,
+    doubles: false,
+    jailRoll: 0,
+    buyProperty(thisProperty) {
+      if (thisProperty.purchased == true) {
+        alert('This property is aldrey owned');
+      }
+      if (this.money >= thisProperty?.value) {
+        // pay for the property
+        this.money -= thisProperty.value;
+        // set purchased value to true
+        thisProperty.purchased = true;
+        // set this player as owner
+        thisProperty.ownedBy = playerNumber;
+        console.log(playerNumber);
+        // push this into a list of properties owned by this player
+        this.properties.push(thisProperty);
+        // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
+        // console.log(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
+      } else {
+        const message = `You can't afford ${thisProperty?.name}, ${this?.name}`;
+      }
+    },
+
+    propertyNames() {
+      for (let i = 0; i < this.properties.length; i += 1) {
+        this.propertyNameList.push(this.properties[i].name);
+        console.log(i);
+      }
+      return this.propertyNameList;
+    },
+  },
+  {
+    id: 6,
+    name: 'Cat',
+    piece: 'cat',
+    logo: CatLogo,
+    currentSpace: 1,
+    isBankrupt: false,
+    money: 1500,
+    properties: [],
+    rrOwned: 0,
+    inJail: false,
+    doubles: false,
+    jailRoll: 0,
+    buyProperty(thisProperty) {
+      if (thisProperty.purchased == true) {
+        alert('This property is aldrey owned');
+      }
+      if (this.money >= thisProperty?.value) {
+        // pay for the property
+        this.money -= thisProperty.value;
+        // set purchased value to true
+        thisProperty.purchased = true;
+        // set this player as owner
+        thisProperty.ownedBy = playerNumber;
+        console.log(playerNumber);
+        // push this into a list of properties owned by this player
+        this.properties.push(thisProperty);
+        // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
+        // console.log(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
+      } else {
+        const message = `You can't afford ${thisProperty?.name}, ${this?.name}`;
+      }
+    },
+
+    propertyNames() {
+      for (let i = 0; i < this.properties.length; i += 1) {
+        this.propertyNameList.push(this.properties[i].name);
+        console.log(i);
+      }
+      return this.propertyNameList;
     },
   },
 ];
+
 function youLose(player) {
-  console.log(player);
-  playersLost.push(player[playerNumber]);
+  playersLost.push(player);
   player.isBankrupt = true;
   player.doubles = false;
-  console.log(`${player.name}, you are broke. You lose.`);
-  // players.splice(playerNumber, 1);
-  console.log(players);
 }
+
 const theBoard = [
   {
     name: 'Jail',
@@ -186,19 +310,17 @@ const theBoard = [
     spaceAction(player) {
       // mising logic
       player.money -= 50;
-      console.log('It\'s $50 to get out of jail, or you can roll doubles.');
     },
   },
   {
-    name: 'GO!',
+    name: 'Go!',
 
     spaceAction(player) {
       player.money += 200;
-      console.log(`${player.name} collected $200!`);
     },
   },
   {
-    name: 'Mediterranean Avenue',
+    name: 'The Old Creek',
     propType: 'brown',
     purchased: false,
     ownedBy: undefined,
@@ -213,58 +335,43 @@ const theBoard = [
       if (this.purchased && player.money - this.rent <= 0) {
         youLose(player);
         playersLost.push(player);
-        console.log(
-          "you should lose here, but there's a loop that doesn't care.",
-        );
 
         /** * If you can afford the rent */
       } else if (this.purchased && player.money - this.rent > 0) {
-        console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
-        /** *subtract the rent from player */
         player.money -= this.rent;
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
-        console.log(
-          `${player.name} had to pay $${this.rent} in rent to ${
-            players[this.ownedBy].name
-          } for ${this.name}`,
-        );
+
         /** *If it's for sale */
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
-        } else {
-          console.log(`${player.name} declined to buy ${this.name}`);
         }
       }
     },
   },
   {
-    name: 'Community Chest',
+    name: 'Pot Luck',
     propType: false,
 
     spaceAction(player) {
-      console.log('Pick a card!');
       const randoCard = Math.random() * 3;
       if (randoCard <= 1) {
         // advance to GO!
         player.currentspace = 1;
-        console.log('Advance to GO!');
       } else if (randoCard < 1 && randoCard <= 2) {
         // pay doctor's fee
-        console.log("Doctor's Fee. Pay $50");
         player.money -= 50;
       } else if (randoCard < 2) {
         // inherit $100
-        console.log('You inherit $100');
         player.money += 100;
       }
     },
   },
   {
-    name: 'Baltic Avenue',
+    name: 'Ganster Paradise',
     propType: 'brown',
     purchased: false,
     ownedBy: undefined,
@@ -278,29 +385,19 @@ const theBoard = [
       /** * If you can't afford rent */
       if (this.purchased && player.money - this.rent <= 0) {
         youLose(player);
-        console.log(
-          "you should lose here, but there's a loop that doesn't care.",
-        );
+
         /** * If you can afford the rent */
       } else if (this.purchased && player.money - this.rent > 0) {
-        console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
-        /** *subtract the rent from player */
         player.money -= this.rent;
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
-        console.log(
-          `${player.name} had to pay $${this.rent} in rent to ${
-            players[this.ownedBy].name
-          } for ${this.name}`,
-        );
+
         /** *If it's for sale */
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
-        } else {
-          console.log(`${player.name} declined to buy ${this.name}`);
         }
       }
     },
@@ -315,11 +412,10 @@ const theBoard = [
       } else {
         player.money = Math.floor(player.money * 0.9);
       }
-      console.log('Thanks for paying your taxes.');
     },
   },
   {
-    name: 'Reading Railroad',
+    name: 'Brighton Station',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -333,35 +429,26 @@ const theBoard = [
       /** * If you can't afford rent */
       if (this.purchased && player.money - this.rent <= 0) {
         youLose(player);
-        console.log(
-          "you should lose here, but there's a loop that doesn't care.",
-        );
+
         /** * If you can afford the rent */
       } else if (this.purchased && player.money - this.rent > 0) {
-        console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
-        console.log(
-          `${player.name} had to pay $${this.rent} in rent to ${
-            players[this.ownedBy].name
-          } for ${this.name}`,
-        );
+
         /** *If it's for sale */
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
-        } else {
-          console.log(`${player.name} declined to buy ${this.name}`);
         }
       }
     },
   },
   {
-    name: 'Oriental Avenue',
+    name: 'The Angels Delight',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -375,43 +462,31 @@ const theBoard = [
       /** * If you can't afford rent */
       if (this.purchased && player.money - this.rent <= 0) {
         youLose(player);
-        console.log(
-          "you should lose here, but there's a loop that doesn't care.",
-        );
+
         /** * If you can afford the rent */
       } else if (this.purchased && player.money - this.rent > 0) {
-        console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
-        /** *subtract the rent from player */
         player.money -= this.rent;
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
-        console.log(
-          `${player.name} had to pay $${this.rent} in rent to ${
-            players[this.ownedBy].name
-          } for ${this.name}`,
-        );
+
         /** *If it's for sale */
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
-        } else {
-          console.log(`${player.name} declined to buy ${this.name}`);
         }
       }
     },
   },
   {
-    name: 'Chance',
+    name: 'Opportunity Knocks',
     propType: 'card',
 
-    spaceAction() {
-      console.log('Pick a card!');
-    },
+    spaceAction() {},
   },
   {
-    name: 'Vermont Avenue',
+    name: 'Potter Avenue',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -425,35 +500,25 @@ const theBoard = [
       /** * If you can't afford rent */
       if (this.purchased && player.money - this.rent <= 0) {
         youLose(player);
-        console.log(
-          "you should lose here, but there's a loop that doesn't care.",
-        );
+
         /** * If you can afford the rent */
       } else if (this.purchased && player.money - this.rent > 0) {
-        console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
-        /** *subtract the rent from player */
         player.money -= this.rent;
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
-        console.log(
-          `${player.name} had to pay $${this.rent} in rent to ${
-            players[this.ownedBy].name
-          } for ${this.name}`,
-        );
+
         /** *If it's for sale */
       } else if (!this.purchased) {
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
-        } else {
-          console.log(`${player.name} declined to buy ${this.name}`);
         }
       }
     },
   },
   {
-    name: 'Connecticut Avenue',
+    name: 'Granger Drive',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -507,7 +572,7 @@ const theBoard = [
 
   // LEFT SIDE OF BOARD
   {
-    name: 'St. Charles Place',
+    name: 'Skywalker Drive',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -549,7 +614,7 @@ const theBoard = [
     },
   },
   {
-    name: 'Electric Company',
+    name: 'Tesla Power Co.',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -591,7 +656,7 @@ const theBoard = [
     },
   },
   {
-    name: 'States Avenue',
+    name: 'Wookie Hole',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -633,7 +698,7 @@ const theBoard = [
     },
   },
   {
-    name: 'Virginia Avenue',
+    name: 'Rey Lane',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -675,7 +740,7 @@ const theBoard = [
     },
   },
   {
-    name: 'Pennsylvania Railroad',
+    name: 'Hove Station',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -717,7 +782,7 @@ const theBoard = [
     },
   },
   {
-    name: 'St. James Place',
+    name: 'Bishop Drive',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -759,7 +824,7 @@ const theBoard = [
     },
   },
   {
-    name: 'Community Chest',
+    name: 'Pot Luck',
     propType: 'card',
 
     spaceAction() {
@@ -767,7 +832,7 @@ const theBoard = [
     },
   },
   {
-    name: 'Tennessee Avenue',
+    name: 'Dunham Street',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -809,7 +874,7 @@ const theBoard = [
     },
   },
   {
-    name: 'New York',
+    name: 'Broyles Lane',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -860,7 +925,7 @@ const theBoard = [
   },
   // TOP ROW
   {
-    name: 'Kentucky Avenue',
+    name: 'Yui Fei Quare',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -902,7 +967,7 @@ const theBoard = [
     },
   },
   {
-    name: 'Chance',
+    name: 'Opportunity Knocks',
     propType: 'card',
 
     spaceAction() {
@@ -910,7 +975,7 @@ const theBoard = [
     },
   },
   {
-    name: 'Indiana Avenue',
+    name: 'Mulan Rouge',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -952,7 +1017,7 @@ const theBoard = [
     },
   },
   {
-    name: 'illinois Avenue',
+    name: 'Han Xin Gardens',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -994,7 +1059,7 @@ const theBoard = [
     },
   },
   {
-    name: 'B & O Railroad',
+    name: 'Falmer Station',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -1036,7 +1101,7 @@ const theBoard = [
     },
   },
   {
-    name: 'Atlantic Avenue',
+    name: 'Shatner Close',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -1078,7 +1143,7 @@ const theBoard = [
     },
   },
   {
-    name: 'Water Works',
+    name: 'Picard Avenue',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -1120,7 +1185,7 @@ const theBoard = [
     },
   },
   {
-    name: 'Ventnor Avenue',
+    name: 'Water Edison',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -1162,7 +1227,7 @@ const theBoard = [
     },
   },
   {
-    name: 'Marvin Gardens',
+    name: 'Crusher Creek',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -1216,7 +1281,7 @@ const theBoard = [
 
   // RIGHT ROW
   {
-    name: 'Pacific Avenue',
+    name: 'Sirat Mews',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -1258,7 +1323,49 @@ const theBoard = [
     },
   },
   {
-    name: 'Community Chest',
+    name: 'Ghengis Crescent',
+    propType: 'property',
+    purchased: false,
+    ownedBy: undefined,
+    value: 300,
+    rent: 26,
+
+    // PROPERTY METHOD
+    spaceAction(player) {
+      // for properties
+
+      /** * If you can't afford rent */
+      if (this.purchased && player.money - this.rent <= 0) {
+        youLose(player);
+        console.log(
+          "you should lose here, but there's a loop that doesn't care.",
+        );
+        /** * If you can afford the rent */
+      } else if (this.purchased && player.money - this.rent > 0) {
+        console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
+        /** *subtract the rent from player */
+        player.money -= this.rent;
+
+        /** *Pay the owner of the property */
+        players[this.ownedBy].money += this.rent;
+        console.log(
+          `${player.name} had to pay $${this.rent} in rent to ${
+            players[this.ownedBy].name
+          } for ${this.name}`,
+        );
+        /** *If it's for sale */
+      } else if (!this.purchased) {
+        // offer sale
+        if (player.makeAChoice) {
+          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
+        } else {
+          console.log(`${player.name} declined to buy ${this.name}`);
+        }
+      }
+    },
+  },
+  {
+    name: 'Pot Luck',
     propType: 'card',
 
     spaceAction() {
@@ -1266,49 +1373,7 @@ const theBoard = [
     },
   },
   {
-    name: 'North Carolina Avenue',
-    propType: 'property',
-    purchased: false,
-    ownedBy: undefined,
-    value: 300,
-    rent: 26,
-
-    // PROPERTY METHOD
-    spaceAction(player) {
-      // for properties
-
-      /** * If you can't afford rent */
-      if (this.purchased && player.money - this.rent <= 0) {
-        youLose(player);
-        console.log(
-          "you should lose here, but there's a loop that doesn't care.",
-        );
-        /** * If you can afford the rent */
-      } else if (this.purchased && player.money - this.rent > 0) {
-        console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
-        /** *subtract the rent from player */
-        player.money -= this.rent;
-
-        /** *Pay the owner of the property */
-        players[this.ownedBy].money += this.rent;
-        console.log(
-          `${player.name} had to pay $${this.rent} in rent to ${
-            players[this.ownedBy].name
-          } for ${this.name}`,
-        );
-        /** *If it's for sale */
-      } else if (!this.purchased) {
-        // offer sale
-        if (player.makeAChoice) {
-          player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
-        } else {
-          console.log(`${player.name} declined to buy ${this.name}`);
-        }
-      }
-    },
-  },
-  {
-    name: 'Pennsylvania Avenue',
+    name: 'Ibis Close',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -1350,7 +1415,7 @@ const theBoard = [
     },
   },
   {
-    name: 'Short Line Railroad',
+    name: 'Portslade Station',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -1392,7 +1457,7 @@ const theBoard = [
     },
   },
   {
-    name: 'Chance',
+    name: 'Opportunity Knocks',
     propType: 'card',
 
     spaceAction() {
@@ -1400,7 +1465,7 @@ const theBoard = [
     },
   },
   {
-    name: 'Park Place',
+    name: 'James Webb Way',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -1442,7 +1507,7 @@ const theBoard = [
     },
   },
   {
-    name: 'Luxury Tax',
+    name: 'Super Tax',
     propType: 'tax',
 
     spaceAction(player) {
@@ -1457,7 +1522,7 @@ const theBoard = [
     },
   },
   {
-    name: 'Boardwalk',
+    name: 'Turning Heights',
     propType: 'property',
     purchased: false,
     ownedBy: undefined,
@@ -1548,9 +1613,9 @@ function movePlayer(player) {
   /** *if the total is bigger than the board */
   if (player.currentSpace + currentRoll > theBoard.length - 1) {
     /** *  player.currentSpace = the current player's space to  the result of
-       * subtracting the playerSpace+currentRoll - theBoard length
-       * This should result in the correct space number;
-       */
+     * subtracting the playerSpace+currentRoll - theBoard length
+     * This should result in the correct space number;
+     */
 
     player.currentSpace = player.currentSpace + currentRoll - (theBoard.length - 1);
     console.log(player.currentSpace);
@@ -1592,6 +1657,7 @@ function playerTurn(player) {
   }
 }
 function switchPlayer() {
+  console.log('switched');
   if (!players[playerNumber].doubles) {
     playerNumber += 1;
     console.log(players);
@@ -1614,8 +1680,8 @@ function switchPlayer() {
 console.log(`It is ${players[playerNumber].name}'s turn!`);
 
 /** *takes the current space value of the player and uses it to find the name
-     * of the current space on the board
-   * */
+ * of the current space on the board
+ * */
 function throwDice() {
   // move from menu screeen to game and show dice button
   if (players[playerNumber].isBankrupt) {
@@ -1641,7 +1707,7 @@ function throwDice() {
   switchPlayer();
 }
 console.log(throwDice);
-const communityChest = [
+const PotLuck = [
   {
     title: 'Life insurance matures. Collect $100.',
     pulled: false,
@@ -1672,7 +1738,7 @@ const communityChest = [
       'Grand Opera opening. Collect $50 from every player for opening night seats.',
   },
 ];
-const chanceCards = [
+const opportunityKnocks = [
   {
     title: 'Pay poor tax of $15',
     pulled: false,
@@ -1682,7 +1748,7 @@ const chanceCards = [
   },
   {
     title:
-    'Make general repairs on all your property. For each house pay $25. For each hotel $100',
+      'Make general repairs on all your property. For each house pay $25. For each hotel $100',
     pulled: false,
 
     chanceAction(player) {
@@ -1711,7 +1777,7 @@ const chanceCards = [
   {
     title: 'Take a walk on the Boardwalk. Advance token to Boardwalk.',
     pulled: false,
-  // player.currentSpace = 40
+    // player.currentSpace = 40
   },
   {
     title: 'This card may be kept until needed or sold. Get out of jail free.',
@@ -1750,14 +1816,14 @@ const chanceCards = [
   },
   {
     title:
-    'Advance token to the nearest railroad and pay owner twice the rental to which they are otherwise entitled. If the Railroad is unowned, you may buy it from the bank.',
+      'Advance token to the nearest railroad and pay owner twice the rental to which they are otherwise entitled. If the Railroad is unowned, you may buy it from the bank.',
     pulled: false,
     railroadSpaces: [6, 16, 26, 36],
 
     findSpace(space) {
       if (
         player.currentSpace
-      < this.railroadSpaces[this.railroadSpaces.length - 1]
+        < this.railroadSpaces[this.railroadSpaces.length - 1]
       ) {
         return space > player.currentSpace;
       }
@@ -1803,7 +1869,7 @@ const chanceCards = [
   },
   {
     title:
-    'Advance Token to nearest utility. If unowned, you may but it from bank. If owned, throw dice and pay owner a total ten times the amount thrown.',
+      'Advance Token to nearest utility. If unowned, you may but it from bank. If owned, throw dice and pay owner a total ten times the amount thrown.',
     pulled: false,
     utilities: [13, 28],
 
@@ -1831,9 +1897,14 @@ const chanceCards = [
     },
   },
 ];
-console.log(chanceCards);
+console.log(opportunityKnocks);
 
 console.log(theBoard?.[players?.[playerNumber]]?.name);
-console.log(communityChest);
+console.log(PotLuck);
 console.log(players);
-export default { players, theBoard, throwDice };
+export default {
+  players,
+  theBoard,
+  throwDice,
+  switchPlayer,
+};

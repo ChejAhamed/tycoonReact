@@ -6,8 +6,6 @@ import Footer from './compoments/Footer';
 
 import configureStore from './redux/store';
 import Home from './pages/Home/Home';
-import Tycoon from './pages/Tycoon/Tycoon';
-import Aboutus from './pages/Aboutus/Aboutus';
 import Game from './pages/Game/Game';
 
 function App() {
@@ -18,8 +16,6 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/aboutus" element={<Aboutus />} />
-          <Route path="/tycoon" element={<Tycoon />} />
           <Route path="/game" element={<Game />} />
 
         </Routes>
