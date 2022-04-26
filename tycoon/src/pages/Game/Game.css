@@ -61,7 +61,7 @@ board styles
  .board{
     width: 800px;
     height: 800px;
-    background-image: url('../../../pictures/tycoon.png');
+    background-image: url('../../assets/Property\ Tycoon.png');
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
