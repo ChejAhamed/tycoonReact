@@ -2,6 +2,13 @@
     width: auto;
     background-color: azure;
     height: 60rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    color: rgb(7, 39, 109);
 }
 .title {
     display: flex;
@@ -11,8 +18,51 @@
     align-items: center;
     align-content: space-around;
 }
+.container-bottom{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
 .sussexPicture{
     width: 20rem;
     height: 20rem;
-    background-image: url("https://banner2.cleanpng.com/20180721/gyk/kisspng-university-of-sussex-logo-master-s-degree-academic-leeds-beckett-university-5b52d2b0c355b7.2907083515321545448001.jpg");
+    background-image: url("../../assets/University_of_Sussex_Logo.svg");
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    
+}
+.container-top{
+    width: 20rem;
+    height: 20rem; 
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+}
+.h4h{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }

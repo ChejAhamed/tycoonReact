@@ -196,15 +196,16 @@ board styles
 .corner{
     position: relative !important;
 }
+
 .div{
     margin-top:2rem;
     width: 2rem;
     height: 2rem;
     image-rendering: calc(25);
     border-image-width: 3rem;
-    background-image:url("../../../boris.jpg");
     
 }
+
 img:hover {
     opacity: 70%;
 }
