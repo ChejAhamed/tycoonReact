@@ -42,13 +42,17 @@
     margin: 5rem;
 }
 .btngame {
-    
+    background-color: rgb(50, 129, 199);
     margin: 0.3rem;
-    background-image: url('../../../boris.jpg');
-    width: 4rem;
-    height: 4rem;
-    color: azure;
-    font-size: 1.5rem;
+    width: 6rem;
+    height: 7rem;
+    color: rgb(153, 17, 17);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
 
 }
 /*
@@ -84,7 +88,6 @@ board styles
 .bottom{
     width: 100%;
     height: 6.6rem;
-    opacity: 50%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -92,8 +95,6 @@ board styles
 .mid-left{
     height: 100%;
     width: 6.9rem;
-    background-color: blue;
-    opacity: 50%;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -101,8 +102,7 @@ board styles
 .mid-mid{
     height: 100%;
     width: 38rem;
-    background-color: rgb(184, 30, 69);
-    opacity: 50%;
+
     
 }
 .mid-right{
@@ -120,28 +120,81 @@ board styles
 .horizontal{
     height: 100%;
     width: 4.9rem;
-    background-color: rgb(160, 44, 44);
-    opacity: 50%;
     
 }
 .vertical{
     height: 4.1rem;
     width: 100%;
-    background-color: rgb(65, 44, 160);
-    opacity: 50%;
+
     
 }
-.player1{
+.playerimage{
     position:relative;
-
-
-    
+    bottom: 0;
 }
 .player1::after{
-    content: url("../../../boris.jpg");
-    position: absolute;
-    bottom: 0;
+    background-image: url('../../assets/Iron.png');
+    background-size: 50%;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.player0::after{
+    background-image: url('../../assets/Boot.png');
+    background-size: 50%;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.player2::after{
+    background-image: url('../../assets/Hat_Stand.png');
+    background-size: 50%;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.player3::after{
+    background-image: url('../../assets/Mobile Phone.png');
+    background-size: 50%;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.player4::after{
+    background-image: url('../../assets/Ship.png');
+    background-size: 50%;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.player5::after{
+    background-image: url('../../assets/Cat.png');
+    background-size: 50%;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
+.corner{
+    position: relative !important;
 }
 .div{
     margin-top:2rem;

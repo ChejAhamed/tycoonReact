@@ -1,3 +1,5 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable react/jsx-indent */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-curly-brace-presence */
 /* eslint-disable no-unused-expressions */
@@ -11,38 +13,113 @@ import { useDispatch, useSelector } from 'react-redux';
 import loadPlayers from '../../redux/actions/actionCreator';
 import './Game.css';
 import BoardPlayer from '../../const/Board';
+import BootLogo from '../../assets/Boot.png';
+import IronLogo from '../../assets/Iron.png';
+import HatStandLogo from '../../assets/Hat_Stand.png';
+import MobilePhoneLogo from '../../assets/Mobile Phone.png';
+import ShipLogo from '../../assets/Ship.png';
+import CatLogo from '../../assets/Cat.png';
 
-console.log(loadPlayers);
 function Game() {
-  const [disableButtonTopHat, setDisableButtonTopHat] = useState(false);
-  const [disableButtonShip, setDisableButtonShip] = useState(false);
-  const [disableButtonShoe, setDisableButtonShoe] = useState(false);
-  const [disableButtonDog, setDisableButtonDog] = useState(false);
-  const [disableButtonCar, setDisableButtonCar] = useState(false);
-  const [disableButtonbird, setDisableButtonBird] = useState(false);
+  const [selectedButton, setSelectedButton] = useState(null);
+  const [palyerstoShow, setPlayersToShow] = useState([
+    {
+      name: 'Boot',
+      img: BootLogo,
+      id: 1,
+      isSelected: false,
+      title: 'boot',
+    },
+    {
+      name: 'Iron',
+      img: IronLogo,
+      id: 2,
+      isSelected: false,
+      title: 'iron',
+    },
+    {
+      name: 'Hat Stand',
+      img: HatStandLogo,
+      id: 3,
+      isSelected: false,
+      title: 'HatStand',
+    },
+    {
+      name: 'Mobile Phone',
+      img: MobilePhoneLogo,
+      id: 4,
+      isSelected: false,
+      title: 'Mobile Phone',
+    },
+    {
+      name: 'Ship',
+      img: ShipLogo,
+      id: 5,
+      isSelected: false,
+      title: 'Ship',
+    },
+    {
+      name: 'Cat',
+      img: CatLogo,
+      id: 6,
+      isSelected: false,
+      title: 'Cat',
+    },
+  ]);
+  const [selectedPlayer, selectPlayer] = useState(null);
   const [showGame, setShowGame] = useState(false);
+  const [showWinner, setShowWinner] = useState(false);
+  const [gameStarted, setStartGame] = useState(null);
+  const [playerPlayingGame, setPlayersPlaying] = useState([]);
   const dispatch = useDispatch();
-  const { theBoard } = BoardPlayer;
-  const { players } = BoardPlayer;
-  const { throwDice } = BoardPlayer;
-  const playerNumber = 0;
-  function throwDices() {
-    throwDice();
+  const {
+    theBoard, players, throwDice, buyProperty,
+    switchPlayer,
+  } = BoardPlayer;
+  const [playerNumber, setPlayerNumber] = useState(0);
+
+  function checkForWinner() {
+    for (let i = 0; i <= playerPlayingGame.length - 1; i += 1) {
+      console.log(playerPlayingGame[i].player.isBankrupt);
+      let bankrupted = 0;
+      if (playerPlayingGame[i].player.isBankrupt == true) {
+        bankrupted = +1;
+      }
+      if (bankrupted == playerPlayingGame.length - 2) {
+        setShowWinner(true);
+      }
+      // const sortedPlayer = playerPlayingGame[i].isBankrupt == false
+      // if (sortedPlayer) { consosole.log('hello'); }
+    }
   }
+  function throwDices() {
+    setPlayerNumber(playerNumber + 1 < playerPlayingGame.length ? playerNumber + 1 : 0);
+    throwDice();
+    checkForWinner();
+  }
+  /* console.log(playerPlayingGame);
+  for (let i = 0; i <= playerPlayingGame.length; i = 0) {
+    if (playerPlayingGame[i]) { consosole.log('hello'); }
+  } */
+
+  const haveBothTypeofPlayers = () => {
+    const haveComputer = playerPlayingGame.some(
+      (player) => player.type.toLowerCase() === 'computer',
+    );
+    const haveHuman = playerPlayingGame.some(
+      (player) => player.type.toLowerCase() === 'human',
+    );
+    if (haveComputer && haveHuman) {
+      return true;
+    }
+    return false;
+  };
   /*
   const loadPlayers = useSelector((store) => store.loadPayers);
   useEffect(() => {
     dispatch(loadPlayers);
   }, []);
   */
-  console.log(theBoard[15]);
-  console.log(players);
-  const playerPlayingGame = [
-  ];
-  console.log(theBoard);
-  console.log(loadPlayers);
-  const playerPlaying = [];
-  console.log(players.length);
   useEffect(() => {
     players[playerNumber];
   }, []);
@@ -51,180 +128,309 @@ function Game() {
     <div className="game">
       {showGame ? (
         <div className="secondWindow">
-          <div className="loader-wrapper">
-            <div className="loader">
-              <div className="loader loader-inner" />
+          {showWinner ? (
 
-            </div>
-          </div>
-          <div className="boardGameSec">
-            <div className="dice">
-              <button type="button" className="diceBnt" onClick={() => throwDices()}>Throw Dice</button>
-              <div className="diceContainer">
-                <div className="diceOne" />
-                <div className="diceTwo" />
-              </div>
+            <div className="showScore">
+              Player won
+              <div className="playerDetails">
+                  <p>Players Details:</p>
+                  <div className="playerContainer">
+                    <table className="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">player name</th>
+                          <th scope="col">amount</th>
+                          <th scope="col">properties</th>
+                          <th scope="col">type</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {<tr key={selectedPlayer.player.id}>
+                          <td className="d-flex align-items-center">
+                            {' '}
+                            <div className="playerlogo">
+                              <img
+                                className="logo"
+                                src={players[playerNumber].logo}
+                                width="60rem"
+                                height="60rem"
+                                alt="logo"
+                              />
+                            </div>
+                            {selectedPlayer.player.name}
+                          </td>
+                          <td>{selectedPlayer.player.money}</td>
+                          <td>{selectedPlayer.player.properties.length}</td>
 
-            </div>
-            <div id="board" className="board">
-              <div className="top">
-                <div id="20" className="parking corner" />
-                <div id="21" className="horizontal" />
-                <div id="22" className="horizontal" />
-                <div id="23" className="horizontal" />
-                <div id="24" className="horizontal" />
-                <div id="25" className="horizontal" />
-                <div id="26" className="horizontal" />
-                <div id="27" className="horizontal player1" />
-                <div id="28" className="horizontal" />
-                <div id="29" className="horizontal" />
-                <div id="0" className="jail corner" />
-              </div>
-              <div className="mid">
-                <div className="mid-left">
-                  <div id="19" className="vertical " />
-                  <div id="18" className="vertical" />
-                  <div id="17" className="vertical" />
-                  <div id="16" className="vertical" />
-                  <div id="15" className="vertical" />
-                  <div id="14" className="vertical" />
-                  <div id="13" className="vertical" />
-                  <div id="12" className="vertical" />
-                  <div id="11" className="vertical" />
-                </div>
-                <div className="mid-mid" />
-                <div className="mid-right">
-                  <div id="30" className="vertical" />
-                  <div id="31" className="vertical" />
-                  <div id="32" className="vertical" />
-                  <div id="33" className="vertical" />
-                  <div id="34" className="vertical" />
-                  <div id="35" className="vertical" />
-                  <div id="36" className="vertical" />
-                  <div id="37" className="vertical" />
-                  <div id="39" className="vertical" />
-                </div>
-              </div>
-              <div className="bottom">
-                <div id="0" className="jail corner" />
-                <div id="10" className="horizontal" />
-                <div id="9" className="horizontal" />
-                <div id="8" className="horizontal" />
-                <div id="7" className="horizontal" />
-                <div id="6" className="horizontal" />
-                <div id="5" className="horizontal" />
-                <div id="4" className="horizontal" />
-                <div id="3" className="horizontal" />
-                <div id="2" className="horizontal" />
-                <div id="1" className="collect corner" />
-              </div>
-
-            </div>
-            <div className="dialogPlayer">
-              <div className="dialogInfo">
-                {loadPlayers}
-                {players[playerNumber].name}
-                {' '}
-                {' '}
-                is on
-                {' '}
-                {theBoard[players[playerNumber].currentSpace].name}
-                {' '}
-                {' '}
-                and has
-                {' '}
-                {players[playerNumber].money}
-              </div>
-              <div className="dialogAction">
-                <button type="button" className="buttonAction" onClick={() => { players[playerNumber].buyProperty(theBoard[players[playerNumber].currentSpace]); }}>Buy Property</button>
-                <button type="button" className="buttonAction" onClick={() => { throwDices(); }}>Throw Dice</button>
-              </div>
-            </div>
-          </div>
-          <div className="infoWindow">
-            <div className="playerList">
-              <div className="playerListname">
-                <p>Players Playing</p>
-                {players.map((player) => <div key={player.id} className="names">{player.name}</div>)}
-              </div>
-              <div className="moneyPlayerList">
-                <p>Players Money</p>
-                {players.map((player) => <div key={player.id} className="money">{player.money}</div>)}
-              </div>
-              <div className="playerListProperty">
-                <p>Number of Propierties</p>
-                {players.map((player) => <div key={player.id} className="properties">{player.properties.length}</div>)}
-              </div>
-
-            </div>
-            <div className="playerDetails">
-              <p>Players Details:</p>
-              <div className="playerContainer">
-                <div className="playerName">
-                  <p>Name:</p>
-                  {players[playerNumber].name}
-                </div>
-                <div className="playerMoney">
-                  <p>Players Money:</p>
-                  {players[playerNumber].money}
-                </div>
-                <div className="playerProperties">
-                  <p>Properties:</p>
-                  {players[playerNumber].properties.length}
-                </div>
-                <div className="playerlogo">
-                  <img className="logo" src={players[playerNumber].logo} width="60rem" height="60rem" alt="logo" />
-                </div>
+                          <td>{selectedPlayer.type}</td>
+                         </tr>}
+                      </tbody>
+                    </table>
+                  </div>
               </div>
             </div>
 
-          </div>
+          ) : (
+            <>
+              <div className="loader-wrapper">
+                <div className="loader">
+                  <div className="loader loader-inner" />
+                </div>
+              </div>
+              <div className="boardGameSec">
+                <div className="dice">
+                  <button
+                    type="button"
+                    className="diceBnt"
+                    onClick={() => throwDices()}
+                  >
+                    Throw Dice
+                  </button>
+                  <div className="diceContainer">
+                    <div className="diceOne" />
+                    <div className="diceTwo" />
+                  </div>
+                </div>
+                <div id="board" className="board">
+                  <div className="top">
+                    <div id="20" className={`parking corner playerimage ${playerPlayingGame[playerNumber].player.currentSpace == 20 ? `playerimage player${playerNumber}` : ''}`} />
+                    {Array.from(Array(9).keys()).map((item) => (
+                      <div key={item} id={item + 21} className={`horizontal ${playerPlayingGame[playerNumber].player.currentSpace == item + 21 ? `playerimage player${playerNumber}` : ''}`} />
+                    ))}
+                    <div id="0" className="jail corner" />
+                  </div>
+                  <div className="mid">
+                    <div className="mid-left">
+                      {Array.from(Array(8).keys()).map((item) => (
+                        // eslint-disable-next-line eqeqeq
+                        <div key={item} id={item + 11} className={`vertical ${playerPlayingGame[playerNumber].player.currentSpace == item + 11 ? `playerimage player${playerNumber}` : ''}`} />
+                      ))}
+                    </div>
+                    <div className="mid-mid" />
+                    <div className="mid-right">
+                      {Array.from(Array(9).keys()).map((item) => (
+                        <div key={item} id={item + 30} className={`vertical ${playerPlayingGame[playerNumber].player.currentSpace == item + 30 ? `playerimage player${playerNumber}` : ''}`} />
+                      ))}
+                    </div>
+                  </div>
+                  <div className="bottom">
+                    <div id="0" className="jail corner" />
+                    {Array.from(Array(9).keys()).map((item) => (
+                      <div key={item} id={item + 2} className={`vertical ${playerPlayingGame[playerNumber].player.currentSpace == item + 2 ? `playerimage player${playerNumber}` : ''}`} />
+                    ))}
+                    <div id="1" className={`collect corner ${playerPlayingGame[playerNumber].player.currentSpace == 1 ? `playerimage player${playerNumber}` : ''}`} />
+                  </div>
+                </div>
+                <div className="dialogPlayer">
+                  <div className="dialogInfo">
+                    {loadPlayers}
+                    {playerPlayingGame[playerNumber].player.name}
+                    {' '}
+                    is on
+                    {' '}
+                    {theBoard[players[playerNumber].currentSpace].name}
+                    {' '}
+                    and has
+                    {' '}
+                    {playerPlayingGame[playerNumber].player.money}
+                  </div>
+                  <div className="dialogAction">
+                    <button
+                      type="button"
+                      className="buttonAction"
+                      onClick={() => {
+                        // eslint-disable-next-line max-len
+                        players[playerNumber].buyProperty(theBoard[players[playerNumber].currentSpace]);
+                      }}
+                    >
+                      Buy Property
+                    </button>
+                    <button
+                      type="button"
+                      className="buttonAction"
+                      onClick={() => {
+                        switchPlayer();
+                        setShowWinner(true);
+                      }}
+                    >
+                      Switch Player
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="infoWindow">
+                <div className="playerList">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">player name</th>
+                        <th scope="col">amount</th>
+                        <th scope="col">property</th>
+                        <th scope="col">type</th>
+                        <th scope="col">space</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {playerPlayingGame.length
+                          && playerPlayingGame.map((player) => (
+                            <tr key={`player${player.player.id}+abc`}>
+                              <td>{player.player.name}</td>
+                              <td>{player.player.money}</td>
+                              <td>{player.player.properties.length}</td>
+                              <td>{player.type}</td>
+                              <td>{player.player.currentSpace}</td>
+                            </tr>
+                          ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div className="playerDetails">
+                  <p>Players Details:</p>
+                  <div className="playerContainer">
+                    <table className="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">player name</th>
+                          <th scope="col">amount</th>
+                          <th scope="col">properties</th>
+                          <th scope="col">type</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {<tr key={selectedPlayer.player.id}>
+                          <td className="d-flex align-items-center">
+                            {' '}
+                            <div className="playerlogo">
+                              <img
+                                className="logo"
+                                src={players[playerNumber].logo}
+                                width="60rem"
+                                height="60rem"
+                                alt="logo"
+                              />
+                            </div>
+                            {selectedPlayer.player.name}
+                          </td>
+                          <td>{selectedPlayer.player.money}</td>
+                          <td>{selectedPlayer.player.properties.length}</td>
+
+                          <td>{selectedPlayer.type}</td>
+                         </tr>}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+            </>
+          )}
         </div>
-
       ) : (
         <div className="firstWindow">
-          <div className="title">
-
-            Game
-          </div>
-          WELLCOME TO THE GAME
+          <div className="title">Game</div>
+          <div className="text-center"> WELLCOME TO THE GAME</div>
           <div className="menu">
             <div className="humanPlayers">
-              <button type="button" disabled={disableButtonTopHat} onClick={() => { playerPlayingGame.push(players.human[0]); setDisableButtonTopHat(false); }} className="topHat  btngame">Top Hat</button>
-              <button type="button" disabled={disableButtonShip} onClick={() => { playerPlayingGame.push(players.human[1]); setDisableButtonShip(false); }} className="ship  btngame">Ship</button>
-              <button type="button" disabled={disableButtonDog} onClick={() => { playerPlayingGame.push(players.human[2]); setDisableButtonDog(false); }} className="dog  btngame">Dog</button>
-              <button type="button" disabled={disableButtonShoe} onClick={() => { playerPlaying.push(players.human[3]); setDisableButtonShoe(true); }} className="shoe  btngame">Shoe</button>
-              <button type="button" disabled={disableButtonCar} onClick={() => { playerPlaying.push(players.human[4]); setDisableButtonCar(true); }} className="car  btngame">Car</button>
-              <button type="button" disabled={disableButtonbird} onClick={() => { playerPlaying.push(players.human[5]); setDisableButtonBird(true); }} className="bird  btngame">Bird</button>
-
+              humans
+              {palyerstoShow.map((item, index) => (
+                <button
+                  key={`button${index + 1}`}
+                  disabled={selectedButton === `ai${item.title}`}
+                  type="button"
+                  onClick={() => {
+                    setPlayersPlaying([
+                      ...playerPlayingGame,
+                      { player: players[index], type: 'Human' },
+                    ]);
+                    setSelectedButton(`human${item.title}`);
+                    selectPlayer({ player: players[index], type: 'Human' });
+                  }}
+                  className={`btngame text-capitalize ${item.title}`}
+                >
+                  <img
+                    className="logo"
+                    src={players[index].logo}
+                    width="60rem"
+                    height="60rem"
+                    alt="logo"
+                  />
+                  {item.name}
+                </button>
+              ))}
             </div>
             <div className="aiPlayers">
-              <button type="button" disabled={disableButtonTopHat} onClick={() => { playerPlaying.push(players.ai[0]); setDisableButtonTopHat(true); }} className="topHat  btngame">Top Hat</button>
-              <button type="button" disabled={disableButtonShip} onClick={() => { playerPlaying.push(players.ai[1]); setDisableButtonShip(true); }} className="ship  btngame">Ship</button>
-              <button type="button" disabled={disableButtonDog} onClick={() => { playerPlaying.push(players.ai[2]); setDisableButtonDog(true); }} className="dog  btngame">Dog</button>
-              <button type="button" disabled={disableButtonShoe} onClick={() => { playerPlaying.push(players.ai[3]); setDisableButtonShoe(true); }} className="shoe  btngame">Shoe</button>
-              <button type="button" disabled={disableButtonCar} onClick={() => { playerPlaying.push(players.ai[4]); setDisableButtonCar(true); }} className="car  btngame">Car</button>
-              <button type="button" disabled={disableButtonbird} onClick={() => { playerPlaying.push(players.ai[5]); setDisableButtonBird(true); }} className="bird  btngame">Bird</button>
-
+              Ai Players
+              {palyerstoShow.map((item, index) => (
+                <button
+                  key={`button${index + 1}`}
+                  type="button"
+                  disabled={selectedButton === `human${item.title}`}
+                  onClick={() => {
+                    setPlayersPlaying([
+                      ...playerPlayingGame,
+                      { player: players[index], type: 'Computer' },
+                    ]);
+                    setSelectedButton(`ai${item.title}`);
+                    selectPlayer({ player: players[index], type: 'Computer' });
+                  }}
+                  className={`btngame text-capitalize ${item.title}`}
+                >
+                  <img
+                    className="logo"
+                    src={players[index].logo}
+                    width="60rem"
+                    height="60rem"
+                    alt="logo"
+                  />
+                  {item.name}
+                </button>
+              ))}
             </div>
           </div>
           <div className="gridBard" />
           <div className="rules">
             <div className="classic">
-              <button type="button" className="classicBnt" onClick={() => startGame()}>Classic</button>
+              <button
+                type="button"
+                className="classicBnt"
+                onClick={() => setStartGame('classic')}
+              >
+                Classic
+              </button>
             </div>
             <div className="quick">
-              <button type="button" className="quickBnt" onClick={() => startGame()}>Quick</button>
+              <button
+                type="button"
+                className="quickBnt"
+                onClick={() => setStartGame('quick')}
+              >
+                Quick
+              </button>
             </div>
             <div className="custom">
-              <button type="button" className="customBnt" onClick={() => startGame()}>Custom</button>
+              <button
+                type="button"
+                className="customBnt"
+                onClick={() => setStartGame('custom')}
+              >
+                Custom
+              </button>
             </div>
           </div>
-          <div className="starGame">
-            <button type="button" className="startGameBnt" onClick={() => { setShowGame(true); }}>Start Game</button>
-          </div>
+          {haveBothTypeofPlayers() && (
+            <div className="starGame">
+              <button
+                type="button"
+                className="startGameBnt"
+                onClick={() => {
+                  setShowGame(true);
+                }}
+              >
+                Start Game
+              </button>
+            </div>
+          )}
         </div>
-
       )}
     </div>
   );
