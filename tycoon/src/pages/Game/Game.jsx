@@ -180,7 +180,7 @@ function Game() {
                 <div className="dice">
                   <button
                     type="button"
-                    className="diceBnt"
+                    className="diceBnt bntGame1"
                     onClick={() => throwDices()}
                   >
                     Throw Dice
@@ -236,7 +236,7 @@ function Game() {
                   <div className="dialogAction">
                     <button
                       type="button"
-                      className="buttonAction"
+                      className="buttonAction bntGame1"
                       onClick={() => {
                         // eslint-disable-next-line max-len
                         players[playerNumber].buyProperty(theBoard[players[playerNumber].currentSpace]);
@@ -246,7 +246,7 @@ function Game() {
                     </button>
                     <button
                       type="button"
-                      className="buttonAction"
+                      className="buttonAction bntGame1"
                       onClick={() => {
                         switchPlayer();
                         setShowWinner(true);

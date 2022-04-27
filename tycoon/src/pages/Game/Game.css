@@ -30,7 +30,10 @@
     align-items: center;
     justify-content: center;
 }
-.button{
+.bntGame1{
+    background-color: #17456b;
+    color: white;
+    margin: 0.5rem;
 
 }
 .title {
