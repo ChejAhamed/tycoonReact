@@ -131,10 +131,9 @@ function Game() {
           {showWinner ? (
 
             <div className="showScore">
-              Player won
-              <div className="playerDetails">
-                  <p>Players Details:</p>
-                  <div className="playerContainer">
+              <div className="showDetails">
+                  <h2>The Winner</h2>
+                  <div className="showContainer">
                     <table className="table">
                       <thead>
                         <tr>
@@ -331,7 +330,7 @@ function Game() {
           <div className="text-center"> WELLCOME TO THE GAME</div>
           <div className="menu">
             <div className="humanPlayers">
-              humans
+              <h5>Human Players</h5>
               {palyerstoShow.map((item, index) => (
                 <button
                   key={`button${index + 1}`}
@@ -359,7 +358,7 @@ function Game() {
               ))}
             </div>
             <div className="aiPlayers">
-              Ai Players
+              <h5>AI Players</h5>
               {palyerstoShow.map((item, index) => (
                 <button
                   key={`button${index + 1}`}
@@ -389,6 +388,10 @@ function Game() {
           </div>
           <div className="gridBard" />
           <div className="rules">
+            <div className="gameRules">
+              <h4>Game Mode</h4>
+            </div>
+            <div className="gameRulesBnt">
             <div className="classic">
               <button
                 type="button"
@@ -415,6 +418,7 @@ function Game() {
               >
                 Custom
               </button>
+            </div>
             </div>
           </div>
           {haveBothTypeofPlayers() && (

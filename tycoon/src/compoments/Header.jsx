@@ -29,11 +29,6 @@ function Header() {
                 Tycoon
               </CNavLink>
             </CNavItem>
-            <CNavItem>
-              <CNavLink href="/aboutus" active>
-                About Us
-              </CNavLink>
-            </CNavItem>
           </CHeaderNav>
         </CCollapse>
       </CContainer>

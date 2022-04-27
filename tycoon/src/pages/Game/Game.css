@@ -8,6 +8,31 @@
     justify-content: center;
     align-items: center;
 }
+.showScore {
+    width: auto;
+    height: 60rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    color: rgb(23, 71, 47);
+}
+.table{
+    background-color: rgb(18, 156, 110);
+}
+.showDetails{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+.button{
+
+}
 .title {
     display: flex;
     flex-direction: row;
@@ -54,6 +79,21 @@
     align-items: center;
     justify-content: center;
 
+}
+.button{
+    cursor:pointer;
+    border-radius: 1.5rem;
+
+
+    
+}
+button:hover:not([disabled]){
+    border:9rem;
+    border-radius: 2rem;
+    border-color: blue;
+    border-radius: 50px;
+    border-width: 5px;
+    
 }
 /*
 board styles
@@ -209,17 +249,49 @@ board styles
 img:hover {
     opacity: 70%;
 }
+.startGameBnt{
+    color: rgb(22, 93, 139);
+    background-color: rgb(70, 150, 243);
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
 
-.rules{
+}
+.gameRules{
     width: auto;
     height: auto;
-    background-color: blueviolet;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
     align-content: center;
     justify-content: space-around;
     align-items: center;
+}
+.gameRulesBnt{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+.rules{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+.rules button{
+    color: rgb(22, 93, 139);
+    background-color: rgb(70, 150, 243);
+    margin-bottom: 1rem;
 }
 .startGame {
     display: flex;
