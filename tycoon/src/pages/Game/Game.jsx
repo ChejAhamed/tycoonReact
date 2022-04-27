@@ -123,8 +123,14 @@ function Game() {
   useEffect(() => {
     players[playerNumber];
   }, []);
+  useEffect(() => {
+    if (gameMode === 'quick') {
+      setTimeout(() => {
+        // end game function call
+      }, 1000 * 60 * 30);
+    }
+  }, [gameMode]);
   return (
-    // usar [...aarray, nuevoItem] en bottom para pushear
     <div className="game">
       {showGame ? (
         <div className="secondWindow">
