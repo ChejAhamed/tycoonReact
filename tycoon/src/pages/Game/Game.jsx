@@ -134,7 +134,7 @@ function Game() {
               <div className="showDetails">
                   <h2>The Winner</h2>
                   <div className="showContainer">
-                    <table className="table">
+                    <table className="tableShowScore">
                       <thead>
                         <tr>
                           <th scope="col">player name</th>
@@ -262,11 +262,11 @@ function Game() {
                   <table className="table">
                     <thead>
                       <tr>
-                        <th scope="col">player name</th>
-                        <th scope="col">amount</th>
-                        <th scope="col">property</th>
-                        <th scope="col">type</th>
-                        <th scope="col">space</th>
+                        <th scope="col">Player Name</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Property</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Space</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -289,10 +289,10 @@ function Game() {
                     <table className="table">
                       <thead>
                         <tr>
-                          <th scope="col">player name</th>
-                          <th scope="col">amount</th>
-                          <th scope="col">properties</th>
-                          <th scope="col">type</th>
+                          <th scope="col">Player Name</th>
+                          <th scope="col">Amount</th>
+                          <th scope="col">Properties</th>
+                          <th scope="col">Type</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -326,8 +326,9 @@ function Game() {
         </div>
       ) : (
         <div className="firstWindow">
-          <div className="title">Game</div>
-          <div className="text-center"> WELLCOME TO THE GAME</div>
+          <div className="text-center">
+          <h5>Game Menu</h5>
+          </div>
           <div className="menu">
             <div className="humanPlayers">
               <h5>Human Players</h5>

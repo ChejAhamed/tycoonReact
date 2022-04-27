@@ -1,6 +1,6 @@
 .game {
     width: auto;
-    background-color: rgb(255, 250, 240);
+    background-color: azure;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -19,7 +19,7 @@
     align-items: center;
     color: rgb(23, 71, 47);
 }
-.table{
+.tableShowScore{
     background-color: rgb(18, 156, 110);
 }
 .showDetails{
@@ -54,8 +54,10 @@
     justify-content: center;
     align-items: stretch;
     flex-wrap: nowrap;
-    margin: 5rem;
+    margin: 2rem;
 
+}.text-center{
+    color: rgb(18, 69, 145);
 }
 .aiPlayers{
     display: flex;
@@ -64,7 +66,7 @@
     justify-content: center;
     align-items: stretch;
     flex-wrap: nowrap;
-    margin: 5rem;
+    margin: 2rem;
 }
 .btngame {
     background-color: rgb(50, 129, 199);
@@ -329,6 +331,7 @@ img:hover {
     align-items: center;
     justify-content: center;
 }
+/*
 .diceOne{
     width: 4rem;
     height: 4rem;
@@ -340,7 +343,7 @@ img:hover {
     height: 4rem;
     background-image: url("https://e7.pngegg.com/pngimages/410/485/png-clipart-warhammer-40-000-yahtzee-dice-30-seconds-computer-icons-dice-game-angle.png");
 }
-
+*/
 
 /*loader
 
@@ -382,7 +385,7 @@ img:hover {
     flex-wrap: nowrap;
     margin-top: 6rem;
     margin-left: 2rem;
-    background-color: azure;
+    background-color: rgb(42, 121, 158);
     
 }
 .playerListname{
@@ -397,7 +400,7 @@ img:hover {
 .playerDetails{
     margin-top: 6rem;
     margin-left: 2rem;
-    background-color: azure;
+    background-color: rgb(42, 121, 158);
 }
 .playerLogo{
     width: 15rem;
