@@ -9,9 +9,10 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-param-reassign */
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import loadPlayers from '../../redux/actions/actionCreator';
+import { useDispatch, useSelector, useWindowSize } from 'react-redux';
+import Confetti from 'react-confetti';
 import './Game.css';
+import loadPlayers from '../../redux/actions/actionCreator';
 import BoardPlayer from '../../const/Board';
 import BootLogo from '../../assets/Boot.png';
 import IronLogo from '../../assets/Iron.png';
@@ -22,6 +23,7 @@ import CatLogo from '../../assets/Cat.png';
 
 function Game() {
   const [selectedButton, setSelectedButton] = useState(null);
+  const { width, height } = useWindowSize();
   const [palyerstoShow, setPlayersToShow] = useState([
     {
       name: 'Boot',
@@ -123,14 +125,24 @@ function Game() {
   useEffect(() => {
     players[playerNumber];
   }, []);
+  useEffect(() => {
+    if (gameMode === 'quick') {
+      setTimeout(() => {
+        // end game function call
+      }, 1000 * 60 * 30);
+    }
+  }, [gameMode]);
   return (
-    // usar [...aarray, nuevoItem] en bottom para pushear
     <div className="game">
       {showGame ? (
         <div className="secondWindow">
           {showWinner ? (
 
             <div className="showScore">
+                  <Confetti
+                    width={800}
+                    height={800}
+                  />
               <div className="showDetails">
                   <h2>The Winner</h2>
                   <div className="showContainer">
