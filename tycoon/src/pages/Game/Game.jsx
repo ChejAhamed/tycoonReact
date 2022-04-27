@@ -131,11 +131,10 @@ function Game() {
           {showWinner ? (
 
             <div className="showScore">
-              Player won
-              <div className="playerDetails">
-                  <p>Players Details:</p>
-                  <div className="playerContainer">
-                    <table className="table">
+              <div className="showDetails">
+                  <h2>The Winner</h2>
+                  <div className="showContainer">
+                    <table className="tableShowScore">
                       <thead>
                         <tr>
                           <th scope="col">player name</th>
@@ -181,7 +180,7 @@ function Game() {
                 <div className="dice">
                   <button
                     type="button"
-                    className="diceBnt"
+                    className="diceBnt bntGame1"
                     onClick={() => throwDices()}
                   >
                     Throw Dice
@@ -237,7 +236,7 @@ function Game() {
                   <div className="dialogAction">
                     <button
                       type="button"
-                      className="buttonAction"
+                      className="buttonAction bntGame1"
                       onClick={() => {
                         // eslint-disable-next-line max-len
                         players[playerNumber].buyProperty(theBoard[players[playerNumber].currentSpace]);
@@ -247,7 +246,7 @@ function Game() {
                     </button>
                     <button
                       type="button"
-                      className="buttonAction"
+                      className="buttonAction bntGame1"
                       onClick={() => {
                         switchPlayer();
                         setShowWinner(true);
@@ -263,11 +262,11 @@ function Game() {
                   <table className="table">
                     <thead>
                       <tr>
-                        <th scope="col">player name</th>
-                        <th scope="col">amount</th>
-                        <th scope="col">property</th>
-                        <th scope="col">type</th>
-                        <th scope="col">space</th>
+                        <th scope="col">Player Name</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Property</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Space</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -290,10 +289,10 @@ function Game() {
                     <table className="table">
                       <thead>
                         <tr>
-                          <th scope="col">player name</th>
-                          <th scope="col">amount</th>
-                          <th scope="col">properties</th>
-                          <th scope="col">type</th>
+                          <th scope="col">Player Name</th>
+                          <th scope="col">Amount</th>
+                          <th scope="col">Properties</th>
+                          <th scope="col">Type</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -327,11 +326,12 @@ function Game() {
         </div>
       ) : (
         <div className="firstWindow">
-          <div className="title">Game</div>
-          <div className="text-center"> WELLCOME TO THE GAME</div>
+          <div className="text-center">
+          <h5>Game Menu</h5>
+          </div>
           <div className="menu">
             <div className="humanPlayers">
-              humans
+              <h5>Human Players</h5>
               {palyerstoShow.map((item, index) => (
                 <button
                   key={`button${index + 1}`}
@@ -359,7 +359,7 @@ function Game() {
               ))}
             </div>
             <div className="aiPlayers">
-              Ai Players
+              <h5>AI Players</h5>
               {palyerstoShow.map((item, index) => (
                 <button
                   key={`button${index + 1}`}
@@ -389,6 +389,10 @@ function Game() {
           </div>
           <div className="gridBard" />
           <div className="rules">
+            <div className="gameRules">
+              <h4>Game Mode</h4>
+            </div>
+            <div className="gameRulesBnt">
             <div className="classic">
               <button
                 type="button"
@@ -415,6 +419,7 @@ function Game() {
               >
                 Custom
               </button>
+            </div>
             </div>
           </div>
           {haveBothTypeofPlayers() && (

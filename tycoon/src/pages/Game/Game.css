@@ -1,12 +1,40 @@
 .game {
     width: auto;
-    background-color: rgb(255, 250, 240);
+    background-color: azure;
     height: auto;
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
     align-items: center;
+}
+.showScore {
+    width: auto;
+    height: 60rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    color: rgb(23, 71, 47);
+}
+.tableShowScore{
+    background-color: rgb(18, 156, 110);
+}
+.showDetails{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+.bntGame1{
+    background-color: #17456b;
+    color: white;
+    margin: 0.5rem;
+
 }
 .title {
     display: flex;
@@ -29,8 +57,10 @@
     justify-content: center;
     align-items: stretch;
     flex-wrap: nowrap;
-    margin: 5rem;
+    margin: 2rem;
 
+}.text-center{
+    color: rgb(18, 69, 145);
 }
 .aiPlayers{
     display: flex;
@@ -39,7 +69,7 @@
     justify-content: center;
     align-items: stretch;
     flex-wrap: nowrap;
-    margin: 5rem;
+    margin: 2rem;
 }
 .btngame {
     background-color: rgb(50, 129, 199);
@@ -54,6 +84,21 @@
     align-items: center;
     justify-content: center;
 
+}
+.button{
+    cursor:pointer;
+    border-radius: 1.5rem;
+
+
+    
+}
+button:hover:not([disabled]){
+    border:9rem;
+    border-radius: 2rem;
+    border-color: blue;
+    border-radius: 50px;
+    border-width: 5px;
+    
 }
 /*
 board styles
@@ -209,17 +254,49 @@ board styles
 img:hover {
     opacity: 70%;
 }
+.startGameBnt{
+    color: rgb(22, 93, 139);
+    background-color: rgb(70, 150, 243);
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
 
-.rules{
+}
+.gameRules{
     width: auto;
     height: auto;
-    background-color: blueviolet;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
     align-content: center;
     justify-content: space-around;
     align-items: center;
+}
+.gameRulesBnt{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+.rules{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+.rules button{
+    color: rgb(22, 93, 139);
+    background-color: rgb(70, 150, 243);
+    margin-bottom: 1rem;
 }
 .startGame {
     display: flex;
@@ -257,6 +334,7 @@ img:hover {
     align-items: center;
     justify-content: center;
 }
+/*
 .diceOne{
     width: 4rem;
     height: 4rem;
@@ -268,7 +346,7 @@ img:hover {
     height: 4rem;
     background-image: url("https://e7.pngegg.com/pngimages/410/485/png-clipart-warhammer-40-000-yahtzee-dice-30-seconds-computer-icons-dice-game-angle.png");
 }
-
+*/
 
 /*loader
 
@@ -310,7 +388,7 @@ img:hover {
     flex-wrap: nowrap;
     margin-top: 6rem;
     margin-left: 2rem;
-    background-color: azure;
+    background-color: rgb(42, 121, 158);
     
 }
 .playerListname{
@@ -325,7 +403,7 @@ img:hover {
 .playerDetails{
     margin-top: 6rem;
     margin-left: 2rem;
-    background-color: azure;
+    background-color: rgb(42, 121, 158);
 }
 .playerLogo{
     width: 15rem;

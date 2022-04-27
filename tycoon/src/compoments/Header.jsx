@@ -21,17 +21,12 @@ function Header() {
           <CHeaderNav>
             <CNavItem>
               <CNavLink href="/" active>
-                Home
+                <div className="menud">Home</div>
               </CNavLink>
             </CNavItem>
             <CNavItem>
               <CNavLink href="/game" active>
-                Tycoon
-              </CNavLink>
-            </CNavItem>
-            <CNavItem>
-              <CNavLink href="/aboutus" active>
-                About Us
+                <div className="menud">Tycoon</div>
               </CNavLink>
             </CNavItem>
           </CHeaderNav>
