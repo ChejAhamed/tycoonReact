@@ -1924,8 +1924,6 @@ const opportunityKnocks = [
   },
 ];
 console.log(theBoard?.[players?.[playerNumber]]?.name);
-console.log(PotLuck);
-console.log(players);
 export default {
   players,
   theBoard,

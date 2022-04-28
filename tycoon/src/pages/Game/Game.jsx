@@ -23,6 +23,7 @@ import ShipLogo from '../../assets/Ship.png';
 import CatLogo from '../../assets/Cat.png';
 
 function Game() {
+  // list of hooks to manage the game states
   const [selectedButton, setSelectedButton] = useState(null);
   const [selectedPlayer, selectPlayer] = useState(null);
   const [showGame, setShowGame] = useState(false);
@@ -95,7 +96,9 @@ function Game() {
       }
     }
   }
-  console.log(message);
+  // check if property is owned and if so, it will display the owned properties
+  // and by who. This will added feature in next versions
+
   let propertiesOwened = {};
   function checkPropertyOwnerShip() {
     for (let i = 0; i <= theBoard.length - 1; i += 1) {
@@ -103,10 +106,10 @@ function Game() {
         propertiesOwened += theBoard[i];
       }
     }
-    console.log(propertiesOwened);
+
     return propertiesOwened;
   }
-  console.log(propertiesOwened);
+  // function thwo dice will throw the dice, check for winner, check propery ownership
   function throwDices() {
     setPlayerNumber(playerNumber + 1 < playerPlayingGame.length ? playerNumber + 1 : 0);
     throwDice();
@@ -117,14 +120,15 @@ function Game() {
   const quickModeResult = () => {
     setEndQuickMode(true);
   };
+  // this allow computer or ai player to make automatic moves
   const computerMode = playerPlayingGame.some(
     (player) => player.type.toLowerCase() === 'computer',
   );
   if (computerMode && gameStarted) {
     throwDice();
-    console.log(`${playerPlayingGame[playerNumber].player}`);
     switchPlayer();
   }
+  // control input data and ensure both human and ai are playing
   const haveBothTypeofPlayers = () => {
     const haveComputer = playerPlayingGame.some(
       (player) => player.type.toLowerCase() === 'computer',
@@ -137,20 +141,14 @@ function Game() {
     }
     return false;
   };
-  console.log(message);
-  /*
-  const loadPlayers = useSelector((store) => store.loadPayers);
-  useEffect(() => {
-    dispatch(loadPlayers);
-  }, []);
-  */
+  // use effect is used to detect any change on the players
   useEffect(() => {
     players[playerNumber];
     selectPlayer();
   }, []);
 
+  // useEffect is used to detect changes on time input
   useEffect(() => {
-    console.log(timeout);
     if (gameMode === 'quick') {
       setTimeout(() => {
         // end game function call
@@ -159,11 +157,13 @@ function Game() {
     }
   }, [gameMode, timeout]);
 
+  // add players into the playing players list
   const addintoPlayersList = (newPlayer) => {
     if (!playerPlayingGame.some(({ player }) => player.id === newPlayer.player.id)) {
       setPlayersPlaying([...playerPlayingGame, newPlayer]);
     }
   };
+  // order the player by number of money on their bank
   const playerPlayingSortedList = playerPlayingGame.slice(0);
   // eslint-disable-next-line max-len
   playerPlayingSortedList.sort((firstplayer, lastplayer) => lastplayer.player.money - firstplayer.player.money);
