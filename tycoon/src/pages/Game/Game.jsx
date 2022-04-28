@@ -217,12 +217,12 @@ function Game() {
                                 alt="logo"
                               />
                             </div>
-                            {selectedPlayer.player.name}
+                            {players[playerNumber].name}
                           </td>
-                          <td>{selectedPlayer.player.money}</td>
-                          <td>{selectedPlayer.player.properties.length}</td>
+                          <td>{players[playerNumber].money}</td>
+                          <td>{players[playerNumber].properties.length}</td>
 
-                          <td>{selectedPlayer.type}</td>
+                          <td>{players[playerNumber].type}</td>
                          </tr>}
                       </tbody>
                     </table>
@@ -499,15 +499,6 @@ function Game() {
                 onClick={() => { setGameMode('quick'); setStartGame(true); }}
               >
                 Quick
-              </button>
-            </div>
-            <div className="custom">
-              <button
-                type="button"
-                className="customBnt"
-                onClick={() => { setGameMode('custom'); setStartGame(true); }}
-              >
-                Custom
               </button>
             </div>
             </div>
