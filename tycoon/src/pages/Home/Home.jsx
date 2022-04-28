@@ -6,9 +6,9 @@ function Home() {
     <div className="home">
       <div className="title">Home</div>
       <div className="container">
-        <dvi className="container-top">
+        <div className="container-top">
           <div className="sussexPicture" />
-        </dvi>
+        </div>
         <div className="container-bottom">
           Welcome to Property Tycoon!
 

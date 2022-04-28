@@ -36,6 +36,17 @@
     margin: 0.5rem;
 
 }
+.timeContainer{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+
+}
+.timeInput{
+    background-color: #2687d6;
+}
 .title {
     display: flex;
     flex-direction: row;
@@ -325,6 +336,7 @@ img:hover {
     height: auto;
 }
 .dice{
+    margin-top: 5rem;
 
 }
 .diceContainer{
@@ -419,6 +431,13 @@ img:hover {
     align-content: center;
     flex-wrap: nowrap;
     flex-direction: column;
+    align-items: center;
+}
+.starGame{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
     align-items: center;
 }
 .playerContainer{

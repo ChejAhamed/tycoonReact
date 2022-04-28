@@ -58,7 +58,7 @@ const players = [
     jailRoll: 0,
     buyProperty(thisProperty) {
       if (thisProperty.purchased == true) {
-        alert('This property is aldrey owned');
+        alert('This property is already owned');
       }
       if (this.money >= thisProperty?.value) {
         // pay for the property
@@ -100,7 +100,7 @@ const players = [
     jailRoll: 0,
     buyProperty(thisProperty) {
       if (thisProperty.purchased == true) {
-        alert('This property is aldrey owned');
+        alert('This property is already owned');
       }
       if (this.money >= thisProperty?.value) {
         // pay for the property
@@ -142,7 +142,7 @@ const players = [
     jailRoll: 0,
     buyProperty(thisProperty) {
       if (thisProperty.purchased == true) {
-        alert('This property is aldrey owned');
+        alert('This property is already owned');
       }
       if (this.money >= thisProperty?.value) {
         // pay for the property
@@ -184,7 +184,7 @@ const players = [
     jailRoll: 0,
     buyProperty(thisProperty) {
       if (thisProperty.purchased == true) {
-        alert('This property is aldrey owned');
+        alert('This property is already owned');
       }
       if (this.money >= thisProperty?.value) {
         // pay for the property
@@ -226,7 +226,7 @@ const players = [
     jailRoll: 0,
     buyProperty(thisProperty) {
       if (thisProperty.purchased == true) {
-        alert('This property is aldrey owned');
+        alert('This property is already owned');
       }
       if (this.money >= thisProperty?.value) {
         // pay for the property
@@ -268,7 +268,7 @@ const players = [
     jailRoll: 0,
     buyProperty(thisProperty) {
       if (thisProperty.purchased == true) {
-        alert('This property is aldrey owned');
+        alert('This property is already owned');
       }
       if (this.money >= thisProperty?.value) {
         // pay for the property
@@ -302,7 +302,9 @@ function youLose(player) {
   player.isBankrupt = true;
   player.doubles = false;
 }
-
+let message = '';
+let message1 = '';
+let message2 = '';
 const theBoard = [
   {
     name: 'Jail',
@@ -310,6 +312,7 @@ const theBoard = [
     spaceAction(player) {
       // mising logic
       player.money -= 50;
+      message = 'You lost 50';
     },
   },
   {
@@ -317,6 +320,7 @@ const theBoard = [
 
     spaceAction(player) {
       player.money += 200;
+      message = 'Collect 200';
     },
   },
   {
@@ -335,16 +339,17 @@ const theBoard = [
       if (this.purchased && player.money - this.rent <= 0) {
         youLose(player);
         playersLost.push(player);
-
+        message = ' Lou lost';
         /** * If you can afford the rent */
       } else if (this.purchased && player.money - this.rent > 0) {
         player.money -= this.rent;
-
+        message1 = `Pay ${this.rent} rent`;
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
 
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -389,12 +394,13 @@ const theBoard = [
         /** * If you can afford the rent */
       } else if (this.purchased && player.money - this.rent > 0) {
         player.money -= this.rent;
-
+        message1 = `Pay ${this.rent} rent`;
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
 
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -440,6 +446,7 @@ const theBoard = [
 
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -466,12 +473,13 @@ const theBoard = [
         /** * If you can afford the rent */
       } else if (this.purchased && player.money - this.rent > 0) {
         player.money -= this.rent;
-
+        message1 = `Pay ${this.rent} rent`;
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
 
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -504,12 +512,13 @@ const theBoard = [
         /** * If you can afford the rent */
       } else if (this.purchased && player.money - this.rent > 0) {
         player.money -= this.rent;
-
+        message1 = `Pay ${this.rent} rent`;
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
 
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -550,6 +559,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -604,6 +614,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -646,6 +657,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -688,6 +700,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -730,6 +743,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -772,6 +786,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -814,6 +829,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -864,6 +880,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -906,6 +923,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -957,6 +975,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1007,6 +1026,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1049,6 +1069,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1091,6 +1112,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1133,6 +1155,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1175,6 +1198,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1217,6 +1241,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1259,6 +1284,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1313,6 +1339,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1355,6 +1382,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1405,6 +1433,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1447,6 +1476,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1497,6 +1527,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1554,6 +1585,7 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
+        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1907,4 +1939,7 @@ export default {
   theBoard,
   throwDice,
   switchPlayer,
+  message,
+  message1,
+  message2,
 };
