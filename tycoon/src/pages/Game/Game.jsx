@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable eqeqeq */
 /* eslint-disable react/jsx-indent */
 /* eslint-disable no-unused-vars */
@@ -23,6 +24,20 @@ import CatLogo from '../../assets/Cat.png';
 
 function Game() {
   const [selectedButton, setSelectedButton] = useState(null);
+  const [selectedPlayer, selectPlayer] = useState(null);
+  const [showGame, setShowGame] = useState(false);
+  const [gameMode, setGameMode] = useState(false);
+  const [showWinner, setShowWinner] = useState(false);
+  const [gameStarted, setStartGame] = useState(false);
+  const [playerPlayingGame, setPlayersPlaying] = useState([]);
+  const [timeout, setTime] = useState([]);
+  const dispatch = useDispatch();
+  const [endQuickMode, setEndQuickMode] = useState(false);
+  const {
+    theBoard, players, throwDice, buyProperty,
+    switchPlayer, message, message1, message2,
+  } = BoardPlayer;
+  const [playerNumber, setPlayerNumber] = useState(0);
   const [palyerstoShow, setPlayersToShow] = useState([
     {
       name: 'Boot',
@@ -67,20 +82,7 @@ function Game() {
       title: 'Cat',
     },
   ]);
-  const [selectedPlayer, selectPlayer] = useState(null);
-  const [showGame, setShowGame] = useState(false);
-  const [gameMode, setGameMode] = useState(false);
-  const [showWinner, setShowWinner] = useState(false);
-  const [gameStarted, setStartGame] = useState(false);
-  const [playerPlayingGame, setPlayersPlaying] = useState([]);
-  const [timeout, setTime] = useState([]);
-  const dispatch = useDispatch();
-  const [endQuickMode, setEndQuickMode] = useState(false);
-  const {
-    theBoard, players, throwDice, buyProperty,
-    switchPlayer, message, message1, message2,
-  } = BoardPlayer;
-  const [playerNumber, setPlayerNumber] = useState(0);
+
   // check for winner in classic mode and is called every time the dice is thrown
   function checkForWinner() {
     for (let i = 0; i <= playerPlayingGame.length - 1; i += 1) {
@@ -93,11 +95,12 @@ function Game() {
       }
     }
   }
+  console.log(message);
   let propertiesOwened = {};
   function checkPropertyOwnerShip() {
     for (let i = 0; i <= theBoard.length - 1; i += 1) {
       if (theBoard[i].purchased === true) {
-        propertiesOwened = theBoard[i];
+        propertiesOwened += theBoard[i];
       }
     }
     console.log(propertiesOwened);
@@ -114,6 +117,14 @@ function Game() {
   const quickModeResult = () => {
     setEndQuickMode(true);
   };
+  const computerMode = playerPlayingGame.some(
+    (player) => player.type.toLowerCase() === 'computer',
+  );
+  if (computerMode && gameStarted) {
+    throwDice();
+    console.log(`${playerPlayingGame[playerNumber].player}`);
+    switchPlayer();
+  }
   const haveBothTypeofPlayers = () => {
     const haveComputer = playerPlayingGame.some(
       (player) => player.type.toLowerCase() === 'computer',
@@ -135,6 +146,7 @@ function Game() {
   */
   useEffect(() => {
     players[playerNumber];
+    selectPlayer();
   }, []);
 
   useEffect(() => {
@@ -152,91 +164,19 @@ function Game() {
       setPlayersPlaying([...playerPlayingGame, newPlayer]);
     }
   };
+  const playerPlayingSortedList = playerPlayingGame.slice(0);
+  // eslint-disable-next-line max-len
+  playerPlayingSortedList.sort((firstplayer, lastplayer) => lastplayer.player.money - firstplayer.player.money);
+  console.log(playerPlayingSortedList);
   return (
     <div className="game">
-      {showGame || endQuickMode ? (
+      {showGame && showWinner === false ? (
         <div className="secondWindow">
-           {
-            endQuickMode ?? (
-              <div className="playerList">
-                  <table className="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Player Name</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Property</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Space</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {playerPlayingGame.length
-                          && playerPlayingGame.map((player) => (
-                            <tr key={`player${`${player.player.id + Math.random()}`}`}>
-                              <td>{player.player.name}</td>
-                              <td>{player.player.money}</td>
-                              <td>{player.player.properties.length}</td>
-                              <td>{player.type}</td>
-                              <td>{player.player.currentSpace}</td>
-                            </tr>
-                          ))}
-                    </tbody>
-                  </table>
-              </div>
-            )
-          }
-          {showWinner ? (
-
-            <div className="showScore">
-                  <Confetti
-                    width={1600}
-                    height={1400}
-                  />
-              <div className="showDetails">
-                  <h2>The Winner</h2>
-                  <div className="showContainer">
-                    <table className="tableShowScore">
-                      <thead>
-                        <tr>
-                          <th scope="col">player name</th>
-                          <th scope="col">amount</th>
-                          <th scope="col">properties</th>
-                          <th scope="col">type</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {<tr key={selectedPlayer.player.id}>
-                          <td className="d-flex align-items-center">
-                            {' '}
-                            <div className="playerlogo">
-                              <img
-                                className="logo"
-                                src={players[playerNumber].logo}
-                                width="60rem"
-                                height="60rem"
-                                alt="logo"
-                              />
-                            </div>
-                            {players[playerNumber].name}
-                          </td>
-                          <td>{players[playerNumber].money}</td>
-                          <td>{players[playerNumber].properties.length}</td>
-
-                          <td>{players[playerNumber].type}</td>
-                         </tr>}
-                      </tbody>
-                    </table>
-                  </div>
-              </div>
-            </div>
-
-          ) : (
-            <>
-              <div className="loader-wrapper">
+            <div className="loader-wrapper">
                 <div className="loader">
                   <div className="loader loader-inner" />
                 </div>
-              </div>
+            </div>
               <div className="boardGameSec">
                 <div className="dice">
                   <div className="diceContainer">
@@ -287,13 +227,6 @@ function Game() {
                     {' '}
                     {playerPlayingGame[playerNumber].player.money}
                   </div>
-                  <div className="dialogInfo">
-                    {message}
-                    {' '}
-                    {message1}
-                    {' '}
-                    {message2}
-                  </div>
                   <div className="dialogAction">
                     <button
                       type="button"
@@ -309,11 +242,10 @@ function Game() {
                       type="button"
                       className="buttonAction bntGame1"
                       onClick={() => {
-                        switchPlayer();
                         setShowWinner(true);
                       }}
                     >
-                      Switch Player
+                      End Game
                     </button>
                     <button
                       type="button"
@@ -338,12 +270,12 @@ function Game() {
                       </tr>
                     </thead>
                     <tbody>
-                      {playerPlayingGame.length
+                      {playerPlayingSortedList.length
                           && playerPlayingGame.map((player) => (
                             <tr key={`player${`${player.player.id + Math.random()}`}`}>
                               <td>{player.player.name}</td>
-                              <td>{player.player.money}</td>
-                              <td>{player.player.properties.length}</td>
+                              <td>{player?.player?.money}</td>
+                              <td>{player?.player?.properties.length}</td>
                               <td>{player.type}</td>
                               <td>{player.player.currentSpace}</td>
                             </tr>
@@ -389,33 +321,89 @@ function Game() {
                     </table>
                   </div>
                 </div>
-                <div className="playerList">
+              </div>
+
+        </div>
+      ) : showGame && showWinner && gameMode === 'quick' ? (
+
+        <div className="showScore">
+              <Confetti
+                width={1600}
+                height={1400}
+              />
+           <div className="playerList">
+           <h2>The Result of the Quick Mode</h2>
                   <table className="table">
                     <thead>
                       <tr>
-                        <th scope="col">Properties owned</th>
-                        <th scope="col">Owned By</th>
+                        <th scope="col">Player Name</th>
+                        <th scope="col">Amount</th>
                         <th scope="col">Property</th>
                         <th scope="col">Type</th>
                         <th scope="col">Space</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {propertiesOwened.length
-                      && propertiesOwened.map((property) => (
-                            <tr key={`property${`${Math.random()}`}`}>
-                              <td>{property.name}</td>
-                              <td>{property.ownedBy}</td>
+                      {playerPlayingSortedList.length
+                          && playerPlayingSortedList.map((player) => (
+                            <tr key={`player${`${player.player.id + Math.random()}`}`}>
+                              <td>{player.player.name}</td>
+                              <td>{player.player.money}</td>
+                              <td>{player.player.properties.length}</td>
+                              <td>{player.type}</td>
+                              <td>{player.player.currentSpace}</td>
                             </tr>
-                      ))}
+                          ))}
                     </tbody>
                   </table>
-                </div>
-              </div>
-
-            </>
-          )}
+           </div>
         </div>
+
+      ) : showGame && showWinner && gameMode === 'classic' ? (
+
+        <div className="showScore">
+              <Confetti
+                width={1600}
+                height={1400}
+              />
+          <div className="showDetails">
+              <h2>The Winner of the Classic Mode</h2>
+              <div className="showContainer">
+                <table className="tableShowScore">
+                  <thead>
+                    <tr>
+                      <th scope="col">player name</th>
+                      <th scope="col">amount</th>
+                      <th scope="col">properties</th>
+                      <th scope="col">type</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {<tr key={selectedPlayer.player.id}>
+                      <td className="d-flex align-items-center">
+                        {' '}
+                        <div className="playerlogo">
+                          <img
+                            className="logo"
+                            src={players[playerNumber].logo}
+                            width="60rem"
+                            height="60rem"
+                            alt="logo"
+                          />
+                        </div>
+                        {players[playerNumber].name}
+                      </td>
+                      <td>{players[playerNumber].money}</td>
+                      <td>{players[playerNumber].properties.length}</td>
+
+                      <td>{players[playerNumber].type}</td>
+                     </tr>}
+                  </tbody>
+                </table>
+              </div>
+          </div>
+        </div>
+
       ) : (
         <div className="firstWindow">
           <div className="text-center">

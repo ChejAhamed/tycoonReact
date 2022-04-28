@@ -1,7 +1,7 @@
 .home {
     width: auto;
     background-color: azure;
-    height: 60rem;
+    height: 65rem;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;

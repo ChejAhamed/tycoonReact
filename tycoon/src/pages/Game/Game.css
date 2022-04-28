@@ -1,7 +1,7 @@
 .game {
     width: auto;
     background-color: azure;
-    height: auto;
+    height: 65rem;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -10,7 +10,7 @@
 }
 .showScore {
     width: auto;
-    height: 60rem;
+    height: 65rem;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -346,54 +346,7 @@ img:hover {
     align-items: center;
     justify-content: center;
 }
-/*
-.diceOne{
-    width: 4rem;
-    height: 4rem;
-    background-image: url("https://e7.pngegg.com/pngimages/410/485/png-clipart-warhammer-40-000-yahtzee-dice-30-seconds-computer-icons-dice-game-angle.png");
 
-}
-.diceTwo{
-    width: 4rem;
-    height: 4rem;
-    background-image: url("https://e7.pngegg.com/pngimages/410/485/png-clipart-warhammer-40-000-yahtzee-dice-30-seconds-computer-icons-dice-game-angle.png");
-}
-*/
-
-/*loader
-
-.loader-warapper {
-    width: 30rem;
-    height: 30rem;
-
-}
-.loader{
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    border: 20px solid #162534;
-    border-top-color:#4bc8eb;
-    border-bottom-color: #f13a8f;
-    border-radius: 50%;
-    animation: rotate 5s linear infinite;
-
-}
-.loader-inner{
-    border-top-color: #36f372;
-    border-bottom-color:#fff;
-    animation-duration: 5s;
-    border-radius: 10px solid;
-}
-@keyframes rotate {
-    0%{
-        transform: scale(1) rotate(360deg)
-    }50%{
-        transform: scale(.5) rotate(-360deg)
-    }100%{
-        transform: scale(1) rotate(360deg)
-    }
-    
-}*/
 .playerList{
     display: flex;
     flex-direction: row;

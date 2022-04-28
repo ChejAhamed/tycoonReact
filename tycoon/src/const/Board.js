@@ -49,7 +49,7 @@ const players = [
     logo: BootLogo,
     currentSpace: 1,
     isBankrupt: false,
-    money: -5,
+    money: 1500,
     properties: [],
     propertyNameList: [],
     rrOwned: 0,
@@ -70,10 +70,10 @@ const players = [
         console.log(playerNumber);
         // push this into a list of properties owned by this player
         this.properties.push(thisProperty);
-        // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
-        // console.log(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
+        alert(`${this.name} just bought ${thisProperty.name} for $${thisProperty.value}`);
+        alert(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
       } else {
-        const message = `You can't afford ${thisProperty?.name}, ${this?.name}`;
+        alert(`You can't afford ${thisProperty?.name}, ${this?.name}`);
       }
     },
 
@@ -92,7 +92,7 @@ const players = [
     logo: IronLogo,
     currentSpace: 1,
     isBankrupt: false,
-    money: 1500,
+    money: 150,
     properties: [],
     rrOwned: 0,
     inJail: false,
@@ -112,10 +112,10 @@ const players = [
         console.log(playerNumber);
         // push this into a list of properties owned by this player
         this.properties.push(thisProperty);
-        // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
-        // console.log(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
+        alert(`${this.name} just bought ${thisProperty.name} for $${thisProperty.value}`);
+        alert(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
       } else {
-        const message = `You can't afford ${thisProperty?.name}, ${this?.name}`;
+        alert(`You can't afford ${thisProperty?.name}, ${this?.name}`);
       }
     },
 
@@ -154,10 +154,10 @@ const players = [
         console.log(playerNumber);
         // push this into a list of properties owned by this player
         this.properties.push(thisProperty);
-        // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
-        // console.log(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
+        alert(`${this.name} just bought ${thisProperty.name} for $${thisProperty.value}`);
+        alert(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
       } else {
-        const message = `You can't afford ${thisProperty?.name}, ${this?.name}`;
+        alert(`You can't afford ${thisProperty?.name}, ${this?.name}`);
       }
     },
 
@@ -196,10 +196,10 @@ const players = [
         console.log(playerNumber);
         // push this into a list of properties owned by this player
         this.properties.push(thisProperty);
-        // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
-        // console.log(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
+        alert(`${this.name} just bought ${thisProperty.name} for $${thisProperty.value}`);
+        alert(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
       } else {
-        const message = `You can't afford ${thisProperty?.name}, ${this?.name}`;
+        alert(`You can't afford ${thisProperty?.name}, ${this?.name}`);
       }
     },
 
@@ -238,10 +238,10 @@ const players = [
         console.log(playerNumber);
         // push this into a list of properties owned by this player
         this.properties.push(thisProperty);
-        // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
-        // console.log(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
+        alert(`${this.name} just bought ${thisProperty.name} for $${thisProperty.value}`);
+        alert(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
       } else {
-        const message = `You can't afford ${thisProperty?.name}, ${this?.name}`;
+        alert(`You can't afford ${thisProperty?.name}, ${this?.name}`);
       }
     },
 
@@ -280,10 +280,10 @@ const players = [
         console.log(playerNumber);
         // push this into a list of properties owned by this player
         this.properties.push(thisProperty);
-        // console.log(this.name+" just bought "+ thisProperty.name + " for $"+ thisProperty.value);
-        // console.log(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
+        alert(`${this.name} just bought ${thisProperty.name} for $${thisProperty.value}`);
+        alert(`${this.name} now owns ${thisProperty?.name}! Enjoy!`);
       } else {
-        const message = `You can't afford ${thisProperty?.name}, ${this?.name}`;
+        alert(`You can't afford ${thisProperty?.name}, ${this?.name}`);
       }
     },
 
@@ -302,9 +302,7 @@ function youLose(player) {
   player.isBankrupt = true;
   player.doubles = false;
 }
-let message = '';
-let message1 = '';
-let message2 = '';
+
 const theBoard = [
   {
     name: 'Jail',
@@ -312,7 +310,7 @@ const theBoard = [
     spaceAction(player) {
       // mising logic
       player.money -= 50;
-      message = 'You lost 50';
+      alert('You lost 50');
     },
   },
   {
@@ -320,7 +318,6 @@ const theBoard = [
 
     spaceAction(player) {
       player.money += 200;
-      message = 'Collect 200';
     },
   },
   {
@@ -339,17 +336,14 @@ const theBoard = [
       if (this.purchased && player.money - this.rent <= 0) {
         youLose(player);
         playersLost.push(player);
-        message = ' Lou lost';
         /** * If you can afford the rent */
       } else if (this.purchased && player.money - this.rent > 0) {
         player.money -= this.rent;
-        message1 = `Pay ${this.rent} rent`;
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
 
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -394,13 +388,13 @@ const theBoard = [
         /** * If you can afford the rent */
       } else if (this.purchased && player.money - this.rent > 0) {
         player.money -= this.rent;
-        message1 = `Pay ${this.rent} rent`;
+        alert(`Pay ${this.rent} rent`);
+
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
 
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -440,13 +434,13 @@ const theBoard = [
       } else if (this.purchased && player.money - this.rent > 0) {
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
 
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -473,13 +467,13 @@ const theBoard = [
         /** * If you can afford the rent */
       } else if (this.purchased && player.money - this.rent > 0) {
         player.money -= this.rent;
-        message1 = `Pay ${this.rent} rent`;
+        alert(`Pay ${this.rent} rent`);
+
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
 
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -512,13 +506,13 @@ const theBoard = [
         /** * If you can afford the rent */
       } else if (this.purchased && player.money - this.rent > 0) {
         player.money -= this.rent;
-        message1 = `Pay ${this.rent} rent`;
+        alert(`Pay ${this.rent} rent`);
+
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
 
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -549,6 +543,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -559,7 +554,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -574,7 +568,7 @@ const theBoard = [
     propType: 'visiting',
 
     spaceAction(player) {
-      console.log(
+      alert(
         `${player.name} looks through the cold bars to the empty cell.`,
       );
     },
@@ -604,6 +598,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -614,7 +609,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -647,6 +641,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -657,7 +652,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -690,6 +684,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -700,7 +695,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -733,6 +727,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -743,7 +738,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -776,6 +770,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -786,7 +781,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -819,6 +813,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -829,7 +824,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -870,6 +864,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -880,7 +875,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -913,6 +907,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -923,7 +918,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -965,6 +959,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -975,7 +970,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1016,6 +1010,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -1026,7 +1021,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1059,6 +1053,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -1069,7 +1064,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1102,6 +1096,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -1112,7 +1107,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1145,6 +1139,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -1155,7 +1150,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1188,6 +1182,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -1198,7 +1193,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1231,6 +1225,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -1241,7 +1236,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1274,6 +1268,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -1284,7 +1279,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1329,6 +1323,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -1339,7 +1334,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1372,6 +1366,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -1382,7 +1377,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1423,6 +1417,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -1433,7 +1428,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1466,6 +1460,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -1476,7 +1471,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1517,6 +1511,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -1527,7 +1522,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1575,6 +1569,7 @@ const theBoard = [
         console.log(`THIS PROPERTY IS OWNED BY ${players[this.ownedBy].name}`);
         /** *subtract the rent from player */
         player.money -= this.rent;
+        alert(`Pay ${this.rent} rent`);
 
         /** *Pay the owner of the property */
         players[this.ownedBy].money += this.rent;
@@ -1585,7 +1580,6 @@ const theBoard = [
         );
         /** *If it's for sale */
       } else if (!this.purchased) {
-        message2 = `${this.name} is for sale`;
         // offer sale
         if (player.makeAChoice) {
           player.buyProperty(theBoard[players[playerNumber]?.currentSpace]);
@@ -1929,8 +1923,6 @@ const opportunityKnocks = [
     },
   },
 ];
-console.log(opportunityKnocks);
-
 console.log(theBoard?.[players?.[playerNumber]]?.name);
 console.log(PotLuck);
 console.log(players);
@@ -1939,7 +1931,4 @@ export default {
   theBoard,
   throwDice,
   switchPlayer,
-  message,
-  message1,
-  message2,
 };
