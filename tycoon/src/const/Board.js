@@ -92,7 +92,7 @@ const players = [
     logo: IronLogo,
     currentSpace: 1,
     isBankrupt: false,
-    money: 150,
+    money: 1500,
     properties: [],
     rrOwned: 0,
     inJail: false,
@@ -568,7 +568,7 @@ const theBoard = [
     propType: 'visiting',
 
     spaceAction(player) {
-      alert(
+      console.log(
         `${player.name} looks through the cold bars to the empty cell.`,
       );
     },
@@ -1693,8 +1693,6 @@ function switchPlayer() {
       theBoard[players[playerNumber].currentSpace] = theBoard[players[playerNumber].currentSpace];
     } else {
       // players[playerNumber] = players[playerNumber];
-      console.log(playerNumber);
-      console.log(theBoard[players[playerNumber].currentSpace]);
       theBoard[players[playerNumber].currentSpace] = theBoard[players[playerNumber].currentSpace];
     }
   } else {
