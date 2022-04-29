@@ -1703,8 +1703,6 @@ function switchPlayer() {
   }
 }
 
-console.log(`It is ${players[playerNumber].name}'s turn!`);
-
 /** *takes the current space value of the player and uses it to find the name
  * of the current space on the board
  * */
@@ -1923,7 +1921,6 @@ const opportunityKnocks = [
     },
   },
 ];
-console.log(theBoard?.[players?.[playerNumber]]?.name);
 export default {
   players,
   theBoard,

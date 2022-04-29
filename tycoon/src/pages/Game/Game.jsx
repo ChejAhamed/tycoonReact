@@ -328,7 +328,7 @@ function Game() {
 
         <div className="showScore">
               <Confetti
-                width={1600}
+                width={1800}
                 height={1400}
               />
            <div className="playerList">
