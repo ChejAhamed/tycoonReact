@@ -1,5 +1,7 @@
 # Tycoon React
 
+This Tycoon game its been developed with React.js, deployed on Firebase and test with Jest. Redux have been implmented with the Flux architectural pattern to build this SPA. The implemantation of hooks have been add to allow more simplier state manipulation of the web app.
+
 Visual Studio Code is the IDE used for this project. Add Live Server extensions on the extension secction to help run the test and the game.
 
 # Game
